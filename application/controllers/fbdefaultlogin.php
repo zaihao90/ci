@@ -22,11 +22,13 @@ class fbdefaultlogin extends CI_Controller {
         );
         //Transfering data to Model
 
-        $this->userprofiledata->fbinsert($data);
+       $query = $this->userprofiledata->fbinsert($data);
 
         //$datamessage['message'] = 'Data Inserted Successfully';
         //Loading View
-        $this->load->view('index');
+                header('Location: http://localhost:8888/ci/index.php');
+            //$this->load->view('index');
+        
 	}	
     
     

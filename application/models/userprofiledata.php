@@ -16,6 +16,7 @@ class userprofiledata extends CI_Model{
         {
             //echo $query."1";
             $this->db->insert("userprofilefb", $data);
+            
         }
         else
         {
@@ -47,6 +48,7 @@ class userprofiledata extends CI_Model{
                 }
             }
         }
+        return(1);
     }
 }
 ?>

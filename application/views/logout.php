@@ -1,5 +1,5 @@
 <?php 
-session_destroy()
+session_destroy();
 header('Location: http://localhost:8888/ci/index.php');
 
 
