@@ -7,7 +7,7 @@ class userprofiledata extends CI_Model{
     }
 
     function fbinsert($data){
-       $query = null;
+      
     // Inserting in Table(students) of Database(college)
        // echo "hhh";
     $sql = "SELECT * FROM userprofilefb WHERE IdUserProfileFB = '".$data['IdUserProfileFB']."'";
@@ -49,6 +49,42 @@ class userprofiledata extends CI_Model{
             }
         }
         return(1);
+    }
+    
+    function manlogin($data)
+    {
+        $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."' and Password = '".$data['Password']."'";
+        $query =  $this->db->query($sql);
+         if($query->num_rows() >0 )
+         {
+            foreach($query->result() as $row){
+                $_SESSION['name'] = $row->Lastname ." ".$row->Firstname;
+            }    
+            return(1);
+         }
+        elseif($query->num_rows() == 0 )
+        {
+            return(0);
+        }
+        
+    }
+    function manregister($data){
+      
+    // Inserting in Table(students) of Database(college)
+       // echo "hhh";
+    $sql = "SELECT * FROM userprofile WHERE WHERE Email = '".$data['email']."'";
+    $query =  $this->db->query($sql);
+        if($query->num_rows() == 0)
+        {
+            //echo $query."1";
+            $this->db->insert("userprofile", $data);
+            return(1);
+            
+        }
+        else
+        {
+            return(0);
+        }
     }
 }
 ?>

@@ -22,15 +22,68 @@ class fbdefaultlogin extends CI_Controller {
         );
         //Transfering data to Model
 
-       $query = $this->userprofiledata->fbinsert($data);
+       $result = $this->userprofiledata->fbinsert($data);
 
         //$datamessage['message'] = 'Data Inserted Successfully';
         //Loading View
-                header('Location: http://localhost:8888/ci/index.php');
+                //header('Location: http://localhost:8888/ci/index.php');
+        if($result == 1)
+        {
+            $data['loginmessage'] = 'SuccessFully Login Using Facebook';
+        }
+        else
+        {
+            $data['loginmessage'] = 'UnsuccessFully Login , Something Wrong';
+        }
+         $this->load->view("index", $data);
             //$this->load->view('index');
         
 	}	
-    
+    public function manualreg()
+    {       
+        $data = array(
+        'Email' => $this->input->post('lemail'),
+        'Password' => $this->input->post('lpassword'),
+        'Firstname' => $this->input->post('lfirstname'),
+        'Lastname' => $this->input->post('llastname'),
+        'Gender' => $this->input->post('lgender'),
+        'Address' => $this->input->post('laddress'),
+        'Postal_Code' => $this->input->post('lpostalcode')
+        );
+        
+        $result = $this->userprofiledata->manregister($data);
+        
+        if($result == 1)
+        {
+            $data['loginmessage'] = 'SuccessFully Register , Please Login';
+        }
+        else
+        {
+            $data['loginmessage'] = 'UnsuccessFully Register';
+        }
+        $this->load->view("index", $data);
+            
+    }
+    public function manuallogin()
+    {
+
+        $data = array(
+        'Email' => $this->input->post('lemail'),
+        'Password' => $this->input->post('lpassword')
+        ); 
+        
+        $result = $this->userprofiledata->manlogin($data);
+        
+        if($result == 1)
+        {
+            $data['loginmessage'] = 'SuccessFully Login';
+        }
+        else
+        {
+            $data['loginmessage'] = 'UnsuccessFully Login';
+        }
+        $this->load->view("index", $data);
+    }
     
 }
 ?>

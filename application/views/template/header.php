@@ -72,7 +72,7 @@ session_start();
                             <?php } 
                             else
                             {?>
-                                <li><a href="<?php echo base_url(); ?>index.php/pages/login"> Login </a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/pages/login" style="color:black;"> Login </a></li>
                             <?php } ?>
                            <!-- <li><a href=""><i class="fa fa-facebook"></i></a></li>
                             <li><a href=""><i class="fa fa-twitter"></i></a></li>

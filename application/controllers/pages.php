@@ -25,40 +25,37 @@ class Pages extends CI_Controller {
     // Load url helper
     $this->load->helper('url');
     }
-
+    
     
     
 	public function index()
-	{
-        
+	{       
         $this->load->view('template/header');
 		$this->load->view('index');
         $this->load->view('template/footer');
-	
-		//$this->load->view('welcome_message');
 	}	
     
     public function login()
 	{
+        //go to login page
         $this->load->view('template/header');
         $this->load->view('loginusingfb');
         $this->load->view('template/footer');
-        
-        //$route['uri-(:any)/(:num)'] = "fbdefaultlogin/index";
-		
-		//$this->load->view('welcome_message');
 	}
     public function logout()
 	{
+        //logout
         $this->load->view('template/header');
         $this->load->view('logout');
         $this->load->view('template/footer');
-        
-        //$route['uri-(:any)/(:num)'] = "fbdefaultlogin/index";
-		
-		//$this->load->view('welcome_message');
 	}
-
+    public function manregi()
+	{
+        //go to manual register
+        $this->load->view('template/header');
+        $this->load->view('manregi');
+        $this->load->view('template/footer');
+	}
     public function aboutus2()
     {
         $this->load->view('aboutus2.html');

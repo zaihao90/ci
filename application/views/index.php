@@ -2,8 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-	
-
+    <?php 
+	   if(isset($data['loginmessage']))
+       {
+           echo $data['loginmessage'];
+       }
+    ?>
     <section id="home-slider">
         <div class="container">
             <div class="main-slider">
