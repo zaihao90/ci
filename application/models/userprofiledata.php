@@ -72,7 +72,7 @@ class userprofiledata extends CI_Model{
       
     // Inserting in Table(students) of Database(college)
        // echo "hhh";
-    $sql = "SELECT * FROM userprofile WHERE WHERE Email = '".$data['email']."'";
+    $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."'";
     $query =  $this->db->query($sql);
         if($query->num_rows() == 0)
         {
