@@ -68,6 +68,9 @@ session_start();
                           <?php  if(isset($_SESSION['name']))
                             { ?>
                             <li><?php echo "Welcome ". $_SESSION['name']; ?></li>
+                           <?php  if(isset($_SESSION['userid'])) { ?>
+                            <li> <img src="//graph.facebook.com/<?php echo $_SESSION['userid']; ?>/picture"></li>
+                            <?php } ?>
                                 <li><a href="<?php echo base_url(); ?>index.php/pages/logout"> Logout </a></li>
                             <?php } 
                             else

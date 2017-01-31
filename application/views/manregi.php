@@ -32,21 +32,22 @@
     echo form_input($logdata);
 
     ?></td></tr>
-            <tr><td><?php
+    <tr><td><?php
 
-            /*echo "<br>";
-            // Show Email Field in View Page
-            echo form_label('Confirm Password:', 'lconpassword');
-            $logdata= array(
-            'style'=>'width:200px',    
-            'type' => 'password',
-            'name' => 'lconpassword',
-            'placeholder' => 'Please Enter Your Confirm Password',
-            'class' => 'input_box'
-            );
-            echo form_input($logdata);
-*/
-            ?></td></tr>
+    echo "<br>";
+    // Show Email Field in View Page
+    echo form_label('Confirm Password:', 'lconpassword');
+    $logdata= array(
+    'style'=>'width:200px',    
+    'type' => 'confpassword',
+    'name' => 'lconpassword',
+    'placeholder' => 'Please Enter Your Confirm Password',
+    'class' => 'input_box',
+    'rules'   => 'trim|required|matches[lpassword]'
+    );
+    echo form_input($logdata);
+
+    ?></td></tr>
   <tr><td ><?php
     
     echo "<br>";

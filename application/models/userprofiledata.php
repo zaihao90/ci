@@ -43,8 +43,8 @@ class userprofiledata extends CI_Model{
                 {
                     echo $check;
                     //update the whole query
-                    $this->db->where($data['IdUserProfileFB'], $id);
-                    $this->db->update('userprofilefbs', $data);
+                    $this->db->where($data['IdUserProfileFB'], $data['IdUserProfileFB']);
+                    $this->db->update('userprofilefb', $data);
                 }
             }
         }
