@@ -29,13 +29,17 @@ class fbdefaultlogin extends CI_Controller {
                 //header('Location: http://localhost:8888/ci/index.php');
         if($result == 1)
         {
-            $data['loginmessage'] = 'SuccessFully Login Using Facebook';
+            $this->load->view('template/header');
+		      $this->load->view('index');
+            $this->load->view('template/footer');
+           // $data['loginmessage'] = 'SuccessFully Login Using Facebook';
         }
         else
         {
             $data['loginmessage'] = 'UnsuccessFully Login , Something Wrong';
         }
-         $this->load->view("index", $data);
+        
+
             //$this->load->view('index');
         
 	}	

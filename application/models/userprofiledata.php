@@ -4,7 +4,10 @@ class userprofiledata extends CI_Model{
     function __construct() {
         parent::__construct();
          $this->load->database();
+        
+        if(!isset($_SESSION)){session_start();}
     }
+    
 
     function fbinsert($data){
       
@@ -70,7 +73,7 @@ class userprofiledata extends CI_Model{
     }
     function manregister($data){
       
-    // Inserting in Table(students) of Database(college)
+
        // echo "hhh";
     $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."'";
     $query =  $this->db->query($sql);
@@ -84,6 +87,37 @@ class userprofiledata extends CI_Model{
         else
         {
             return(0);
+        }
+    }
+
+    function getfbprofiledata(){
+      
+        //get data for myprofile for fb login
+        
+       // $userid = $this->session->userdata('userid');
+    $sql = "SELECT * FROM userprofilefb WHERE IdUserProfileFB = '".$_SESSION['userid']."'";
+    $query =  $this->db->query($sql);
+        if($query->num_rows() == 1)
+        {
+             $data = array();
+             foreach($query->result() as $row){
+                 
+                if($row->Name != null)
+                {
+                    $data['Name'] = $row->Name;
+                }
+                if($row->Email != null)
+                {
+                    $data['Email'] = $row->Email;
+                }
+             }
+       
+            return($data);
+        }
+        else
+        {
+            // return(0);
+            echo "getfbprofiledata problem";
         }
     }
 }

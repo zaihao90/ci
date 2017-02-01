@@ -42,6 +42,16 @@ class Pages extends CI_Controller {
         $this->load->view('loginusingfb');
         $this->load->view('template/footer');
 	}
+    public function myprofile()
+    {
+        //go to profile page    getfbprofiledata
+        
+        $this->load->model('userprofiledata');
+        $dataprofile = $this->userprofiledata->getfbprofiledata();      
+        $this->load->view('template/header');
+        $this->load->view('myprofile',$dataprofile);
+        $this->load->view('template/footer');
+    }
     public function logout()
 	{
         //logout

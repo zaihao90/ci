@@ -1,28 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();   
-    
-    /*if(isset($_SESSION['name']))
-    {
-        echo "Full Name:".$_SESSION['name']."<br>";
-    }
-    if(isset($_SESSION['first_name']))
-    {
-        echo "First Name:".$_SESSION['first_name']."<br>";
-    }
-    if(isset($_SESSION['last_name']))
-    {
-        echo "Last Name:".$_SESSION['last_name']."<br>";
-    }
-    if(isset($_SESSION['email']))
-    {
-        echo "Email Address:".$_SESSION['email']."<br>";
-    }
-    if(isset($_SESSION['userid']))
-    {
-        echo "UserID:".$_SESSION['userid']."<br>";
-    }*/
+if(!isset($_SESSION)){session_start();}  
 ?>
 <head>
     <meta charset="utf-8">
@@ -67,9 +46,12 @@ session_start();
                         <ul class="nav nav-pills">
                           <?php  if(isset($_SESSION['name']))
                             { ?>
-                            <li><?php echo "Welcome ". $_SESSION['name']; ?></li>
+                            <li><a href="<?php echo base_url(); ?>index.php/pages/myprofile"><?php echo "Welcome ". $_SESSION['name']; ?></a></li>
                            <?php  if(isset($_SESSION['userid'])) { ?>
-                            <li> <img src="//graph.facebook.com/<?php echo $_SESSION['userid']; ?>/picture"></li>
+                            <li>
+                                <a href="<?php echo base_url(); ?>index.php/pages/myprofile"> <img src="//graph.facebook.com/<?php echo $_SESSION['userid']; ?>/picture">
+                                </a>
+                            </li>
                             <?php } ?>
                                 <li><a href="<?php echo base_url(); ?>index.php/pages/logout"> Logout </a></li>
                             <?php } 
