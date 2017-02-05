@@ -66,6 +66,8 @@ if (isset($accessToken)) {
         $_SESSION['email'] = $profile['email'];
         $_SESSION['userid'] = $profile['id'];
         
+    
+        
         
         $data = array(
             'name'      => $profile['name'],

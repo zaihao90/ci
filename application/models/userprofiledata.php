@@ -5,7 +5,7 @@ class userprofiledata extends CI_Model{
         parent::__construct();
          $this->load->database();
         
-        if(!isset($_SESSION)){session_start();}
+       if(!isset($_SESSION)){session_start();}
     }
     
 
@@ -110,6 +110,44 @@ class userprofiledata extends CI_Model{
                 {
                     $data['Email'] = $row->Email;
                 }
+                if($row->Gender != null)
+                {
+                    $data['Gender'] = $row->Gender;
+                }
+                if($row->Birthdate != null)
+                { 
+                    $convert = $row->Birthdate;
+                      $convert =  date('d-m-Y', strtotime($convert));
+                    $data['Birthdate'] = $convert;
+                }
+                if($row->Doornum != null)
+                {
+                    $data['Doornum'] = $row->Doornum;
+                }
+                if($row->Streetnum != null)
+                {
+                    $data['Streetnum'] = $row->Streetnum;
+                }
+                if($row->Routenum != null)
+                {
+                    $data['Routenum'] = $row->Routenum;
+                }
+                if($row->Cityname != null)
+                {
+                    $data['Cityname'] = $row->Cityname;
+                }
+                if($row->Statename != null)
+                {
+                    $data['Statename'] = $row->Statename;
+                }
+                if($row->Zipcodenum != null)
+                {
+                    $data['Zipcodenum'] = $row->Zipcodenum;
+                }
+                if($row->Countryname != null)
+                {
+                    $data['Countryname'] = $row->Countryname;
+                }
              }
        
             return($data);
@@ -120,5 +158,77 @@ class userprofiledata extends CI_Model{
             echo "getfbprofiledata problem";
         }
     }
+    
+    function updateprofile(){
+         
+      if(isset($_SESSION) && !empty($_POST) && isset($_POST['name']))
+         {
+              
+        $name= $this->input->post('name');
+        $email= $this->input->post('email');
+            if($_SESSION['email']  == $email)
+            {
+                 
+                $gender= $this->input->post('gender');
+                $birthdate= $this->input->post('birthdate');
+                if(isset($birthdate))
+                {
+                    $birthdate =  date('Y-m-d', strtotime($birthdate));
+                }
+                $doornum= $this->input->post('doornum');
+                $streetnum= strtoupper($this->input->post('streetnum'));
+                $routename= strtoupper($this->input->post('routename'));
+                $cityname= strtoupper($this->input->post('cityname'));
+                $statename= strtoupper($this->input->post('statename'));
+                $zipcodenum= $this->input->post('zipcodenum');
+                $countryname=strtoupper( $this->input->post('countryname'));
+
+                $fbsql = "SELECT * FROM userprofilefb WHERE Email = '".$_SESSION['email']."'";
+                $fbsql = $this->db->query($fbsql);
+                
+    
+                //$nonfbsql = "SELECT * FROM userprofile WHERE Email = '".$_SESSION['email']."'";
+               // $nonfbsql = $this->db->query($sql);
+         
+                if($fbsql)
+                {
+                    
+                    $sql = "UPDATE userprofilefb SET Gender='".$gender."',Birthdate='".$birthdate."',Doornum='".$doornum."',Streetnum='".$streetnum."',Routenum='".$routename."',Cityname='".$cityname."',Statename='".$statename."',Zipcodenum='".$zipcodenum."',Countryname='".$countryname."' WHERE Email='".$email."'";
+                    $checkfbsql = $this->db->query($sql);
+                    
+                    if($checkfbsql)
+                    {
+                        $dataprofile['message'] = "Successfully Updated";
+                     
+                        
+                        $this->load->model('userprofiledata');
+                        $dataprofile = $this->userprofiledata->getfbprofiledata();      
+                        $this->load->view('template/header');
+                        redirect('index.php/pages/myprofile',$dataprofile);
+                        //$this->load->view('myprofile',$dataprofile);
+                        $this->load->view('template/footer');
+                   
+
+                    }
+                }
+               /* if($nonfbsql == 1)
+                {
+                    $sql = "UPDATE userprofilefb SET is_close='1' WHERE Email=".$title_id;
+                    $this->db->query($sql);
+                }*/
+                
+
+            }
+            else
+            {
+                echo "getfbprofiledata problem";
+            }
+        }
+        else
+        {
+            echo "getfbprofiledata problem";
+        }
+    }
+         
 }
 ?>
