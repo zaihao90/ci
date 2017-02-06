@@ -86,30 +86,24 @@ class userprofiledata extends CI_Model{
 
     $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."'";
     $query =  $this->db->query($sql);
+    $result = $query->num_rows();
+  
         
     $sqlfb = "SELECT * FROM userprofilefb WHERE Email = '".$data['Email']."'";
     $queryfb =  $this->db->query($sqlfb);
-        
-        if(!$query && !$queryfb)
+    $resultfb = $queryfb->num_rows();
+
+        if($result !=1 && $resultfb !=1)
         {
-            if ( $query = $this->db->query($sql))
-            {
-                $this->db->insert("userprofile", $data);
-                $_SESSION['errormessage'] = "Register Successfully";
-                redirect('index.php/pages/login');
-            }
-            else 
-            {
-                $_SESSION['errormessage'] = "Register UNSuccessfully";
-                redirect('index.php/pages/manregi');
-            }
+              
+            $this->db->insert("userprofile", $data); 
+            $_SESSION['errormessage'] = "Register Successfully";
+            redirect('index.php/pages/login');
         }
         else
         {
-                $_SESSION['errormessage'] = "Email Have Been Used";
-                redirect('index.php/pages/manregi');
-            
-            
+            $_SESSION['errormessage'] = "Email Have Been Used";
+            redirect('index.php/pages/manregi');
         }
     }
 
