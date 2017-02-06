@@ -108,6 +108,8 @@ class userprofiledata extends CI_Model{
         {
                 $_SESSION['errormessage'] = "Email Have Been Used";
                 redirect('index.php/pages/manregi');
+            
+            
         }
     }
 
