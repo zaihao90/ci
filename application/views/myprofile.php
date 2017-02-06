@@ -131,7 +131,7 @@ $("#txtDate").val($.datepicker.formatDate('dd M yy', new Date()));
                 <input class="field" id="datepicker" name="birthdate" readonly="readonly" value="<?php echo $Birthdate; ?>" > 
             </td>
             <td>
-            #DD/MM/YYYY
+            #DD-MM-YYYY
             </td>
         </tr>
         <tr>
@@ -146,36 +146,36 @@ $("#txtDate").val($.datepicker.formatDate('dd M yy', new Date()));
         <tr>
             <td class="label">Door Number:</td>
             <td class="wideField" colspan="3">
-                <input class="field" id="hse_address" name="doornum" placeholder="Door Number(Optional)" style="text-transform:uppercase" value="<?php echo $Doornum; ?>">
+                <input class="field" id="hse_address" name="doornum" placeholder="Door Number(Optional)" style="text-transform:uppercase" value="<?php  if(isset($Doornum)){echo $Doornum;} ?>">
             </td>
          </tr>
         <tr>
             <td class="label">Street address:</td>
             <td class="slimField">
-                <input class="field" id="street_number" name="streetnum" style="text-transform:uppercase" value="<?php echo $Streetnum; ?>">
+                <input class="field" id="street_number" name="streetnum" style="text-transform:uppercase" value="<?php if(isset($Doornum)){echo $Doornum;}  ?>">
             </td>
             <td class="wideField" colspan="2">
-                <input class="field" id="route" name="routename"  style="text-transform:uppercase" value="<?php echo $Routenum; ?>">
+                <input class="field" id="route" name="routename"  style="text-transform:uppercase" value="<?php if(isset($Routenum)){echo $Routenum;}?>">
             </td>
         </tr>
         <tr>
             <td class="label">City:</td>
             <td class="wideField" colspan="3">
-                <input class="field" id="locality" name="cityname" style="text-transform:uppercase" value="<?php echo $Cityname; ?>">
+                <input class="field" id="locality" name="cityname" style="text-transform:uppercase" value="<?php if(isset($Cityname)){echo $Cityname;}?>">
             </td>
          </tr>
         <tr>
             <td class="label">State:</td>
             <td class="slimField">
-                <input class="field" id="administrative_area_level_1" name="statename" style="text-transform:uppercase" value="<?php echo $Statename; ?>"></td>
+                <input class="field" id="administrative_area_level_1" name="statename" style="text-transform:uppercase" value="<?php if(isset($Statename)){echo $Statename;}?>"></td>
             <td class="label">Zip code:</td>
             <td class="wideField">
-                <input class="field" id="postal_code" name="zipcodenum" style="text-transform:uppercase" value="<?php echo $Zipcodenum; ?>"></td>
+                <input class="field" id="postal_code" name="zipcodenum" style="text-transform:uppercase" value="<?php if(isset($Zipcodenum)){echo $Zipcodenum;} ?>"></td>
         </tr>
         <tr>
             <td class="label">Country:</td>
             <td class="wideField" colspan="3">
-                <input class="field" id="country"  name="countryname" style="text-transform:uppercase" value="<?php echo $Countryname; ?>"></td>
+                <input class="field" id="country"  name="countryname" style="text-transform:uppercase" value="<?php if(isset($Countryname)){echo $Countryname;}  ?>"></td>
         </tr>
         <tr>
         <td>

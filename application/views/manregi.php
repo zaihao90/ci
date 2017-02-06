@@ -3,6 +3,15 @@
 <?php
 // Open form and set URL for submit form
     //echo form_open('fbdefaultlogin/manuallogin');
+   if(isset($_SESSION['errormessage']))
+    {   
+        if($_SESSION['errormessage'] == "Register Successfully")
+        {
+            $_SESSION['errormessage']="";
+        }
+        else
+        echo '<span style="color:red;">'.$_SESSION['errormessage'].'</span>';
+    }
 
     echo form_open('index.php/fbdefaultlogin/manualreg', ['class' => 'form', 'method' => 'POST']);
         // Show Name Field in View Page
@@ -84,36 +93,6 @@
     echo form_radio('lgender','F',true);
       echo form_label('Male:', 'llastname');
     echo form_radio('lgender','M',true);
-
-    ?></td></tr>
-    <tr><td><?php
-    
-    echo "<br>";
-    // Show Email Field in View Page
-    echo form_label('Address:', 'laddress');
-    $logdata= array(
-    'style'=>'width:200px',    
-    'type' => 'text',
-    'name' => 'laddress',
-    'placeholder' => 'Please Enter Your Address',
-    'class' => 'input_box'
-    );
-    echo form_input($logdata);
-
-    ?></td></tr>
-    <tr><td><?php
-    
-    echo "<br>";
-    // Show Email Field in View Page
-    echo form_label('Postal Code:', 'lpostalcode');
-    $logdata= array(
-    'style'=>'width:200px',    
-    'type' => 'text',
-    'name' => 'lpostalcode',
-    'placeholder' => 'Please Enter Your Postal code',
-    'class' => 'input_box'
-    );
-    echo form_input($logdata);
 
     ?></td></tr>
     <tr><td><?php

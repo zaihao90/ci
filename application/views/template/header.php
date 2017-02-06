@@ -39,11 +39,23 @@ if(!isset($_SESSION)){session_start();}
 </head><!--/head-->
     
     <header id="header">      
-        <div class="container">
+        <div class="container"> 
             <div class="row">
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
                         <ul class="nav nav-pills">
+                            <li>
+                             <?php  if(isset($_SESSION['errormessage']))
+                                    {   
+                                        if($_SESSION['errormessage'] == "Register Successfully")
+                                        {
+                                            $_SESSION['errormessage']="";
+                                        }
+                                        else
+                                        echo '<span style="color:red;">'.$_SESSION['errormessage'].'</span>';
+                                        $_SESSION['errormessage']="";
+                                    } ?>
+                            </li>
                           <?php  if(isset($_SESSION['name']))
                             { ?>
                             <li><a href="<?php echo base_url(); ?>index.php/pages/myprofile"><?php echo "Welcome ". $_SESSION['name']; ?></a></li>

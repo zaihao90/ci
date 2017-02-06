@@ -108,6 +108,10 @@ if (isset($accessToken)) {
  ?><table align="center" ><tr><td align="right"><?php
     // Open form and set URL for submit form
     //echo form_open('fbdefaultlogin/manuallogin');
+   if(isset($_SESSION['errormessage']))
+    {   
+        echo '<span style="color:green;">'.$_SESSION['errormessage'].'</span>';
+    } 
     echo form_open('index.php/fbdefaultlogin/manuallogin', ['class' => 'form', 'method' => 'POST']);
         // Show Name Field in View Page
         echo form_label('Email :', 'lemail');

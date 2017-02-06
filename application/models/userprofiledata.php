@@ -61,13 +61,24 @@ class userprofiledata extends CI_Model{
          if($query->num_rows() >0 )
          {
             foreach($query->result() as $row){
-                $_SESSION['name'] = $row->Lastname ." ".$row->Firstname;
+                if($row->Name != null)
+                {
+                    $_SESSION['name'] = $row->Name;
+                }
+                if($row->Email != null)
+                {
+                    $_SESSION['email'] = $row->Email;
+                }
+                
             }    
-            return(1);
+            $_SESSION['errormessage'] = "";
+            redirect('index.php/');
+
          }
         elseif($query->num_rows() == 0 )
         {
-            return(0);
+            $_SESSION['errormessage'] = "UnSuccessfully Login";
+            redirect('index.php/');
         }
         
     }
@@ -77,16 +88,17 @@ class userprofiledata extends CI_Model{
        // echo "hhh";
     $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."'";
     $query =  $this->db->query($sql);
-        if($query->num_rows() == 0)
+
+        if ( $query = $this->db->query($sql))
         {
-            //echo $query."1";
             $this->db->insert("userprofile", $data);
-            return(1);
-            
+            $_SESSION['errormessage'] = "Register Successfully";
+            redirect('index.php/pages/login');
         }
         else
         {
-            return(0);
+            $_SESSION['errormessage'] = "Register UNSuccessfully";
+            redirect('index.php/pages/manregi');
         }
     }
 
@@ -95,12 +107,26 @@ class userprofiledata extends CI_Model{
         //get data for myprofile for fb login
         
        // $userid = $this->session->userdata('userid');
-    $sql = "SELECT * FROM userprofilefb WHERE IdUserProfileFB = '".$_SESSION['userid']."'";
-    $query =  $this->db->query($sql);
-        if($query->num_rows() == 1)
+    //$sql = "SELECT * FROM userprofilefb WHERE IdUserProfileFB = '".$_SESSION['userid']."'";
+    //$query =  $this->db->query($sql);
+        
+        
+        $fbsql = "SELECT * FROM userprofilefb WHERE Email = '".$_SESSION['email']."'";         
+        if ( !$fbsql = $this->db->query($fbsql))
+        {
+                $error = $this->db->error(); // Has keys 'code' and 'message'
+        }
+    
+        $nonfbsql = "SELECT * FROM userprofile WHERE Email = '".$_SESSION['email']."'";
+        if ( !$nonfbsql = $this->db->query($nonfbsql))
+        {
+                $error = $this->db->error(); // Has keys 'code' and 'message'
+        }
+        
+        if($fbsql->num_rows() == 1)
         {
              $data = array();
-             foreach($query->result() as $row){
+             foreach($fbsql->result() as $row){
                  
                 if($row->Name != null)
                 {
@@ -148,9 +174,62 @@ class userprofiledata extends CI_Model{
                 {
                     $data['Countryname'] = $row->Countryname;
                 }
+                 return($data);
              }
-       
-            return($data);
+        }
+        elseif($nonfbsql->num_rows() == 1)
+        {
+             $data = array();
+             foreach($nonfbsql->result() as $row){
+                 
+                if($row->Name != null)
+                {
+                    $data['Name'] = $row->Name;
+                }
+                if($row->Email != null)
+                {
+                    $data['Email'] = $row->Email;
+                }
+                if($row->Gender != null)
+                {
+                    $data['Gender'] = $row->Gender;
+                }
+                if($row->Birthdate != null)
+                { 
+                    $convert = $row->Birthdate;
+                      $convert =  date('d-m-Y', strtotime($convert));
+                    $data['Birthdate'] = $convert;
+                }
+                if($row->Doornum != null)
+                {
+                    $data['Doornum'] = $row->Doornum;
+                }
+                if($row->Streetnum != null)
+                {
+                    $data['Streetnum'] = $row->Streetnum;
+                }
+                if($row->Routenum != null)
+                {
+                    $data['Routenum'] = $row->Routenum;
+                }
+                if($row->Cityname != null)
+                {
+                    $data['Cityname'] = $row->Cityname;
+                }
+                if($row->Statename != null)
+                {
+                    $data['Statename'] = $row->Statename;
+                }
+                if($row->Zipcodenum != null)
+                {
+                    $data['Zipcodenum'] = $row->Zipcodenum;
+                }
+                if($row->Countryname != null)
+                {
+                    $data['Countryname'] = $row->Countryname;
+                }
+                  return($data);
+             }
         }
         else
         {
@@ -187,10 +266,10 @@ class userprofiledata extends CI_Model{
                 $fbsql = $this->db->query($fbsql);
                 
     
-                //$nonfbsql = "SELECT * FROM userprofile WHERE Email = '".$_SESSION['email']."'";
-               // $nonfbsql = $this->db->query($sql);
+                $nonfbsql = "SELECT * FROM userprofile WHERE Email = '".$_SESSION['email']."'";
+                $nonfbsql = $this->db->query($sql);
          
-                if($fbsql)
+                if($fbsql->num_rows() == 1)
                 {
                     
                     $sql = "UPDATE userprofilefb SET Gender='".$gender."',Birthdate='".$birthdate."',Doornum='".$doornum."',Streetnum='".$streetnum."',Routenum='".$routename."',Cityname='".$cityname."',Statename='".$statename."',Zipcodenum='".$zipcodenum."',Countryname='".$countryname."' WHERE Email='".$email."'";
@@ -211,11 +290,26 @@ class userprofiledata extends CI_Model{
 
                     }
                 }
-               /* if($nonfbsql == 1)
+                if($nonfbsql->num_rows() == 1)
                 {
-                    $sql = "UPDATE userprofilefb SET is_close='1' WHERE Email=".$title_id;
-                    $this->db->query($sql);
-                }*/
+                    $sql = "UPDATE userprofile SET Gender='".$gender."',Birthdate='".$birthdate."',Doornum='".$doornum."',Streetnum='".$streetnum."',Routenum='".$routename."',Cityname='".$cityname."',Statename='".$statename."',Zipcodenum='".$zipcodenum."',Countryname='".$countryname."' WHERE Email='".$email."'";
+                    $checkfbsql = $this->db->query($sql);
+                    
+                    if($checkfbsql)
+                    {
+                        $dataprofile['message'] = "Successfully Updated";
+                     
+                        
+                        $this->load->model('userprofiledata');
+                        $dataprofile = $this->userprofiledata->getfbprofiledata();      
+                        $this->load->view('template/header');
+                        redirect('index.php/pages/myprofile',$dataprofile);
+                        //$this->load->view('myprofile',$dataprofile);
+                        $this->load->view('template/footer');
+                   
+
+                    }
+                }
                 
 
             }

@@ -47,14 +47,16 @@ class fbdefaultlogin extends CI_Controller {
 	}	
     public function manualreg()
     {       
+        
+        
         $data = array(
         'Email' => $this->input->post('lemail'),
         'Password' => $this->input->post('lpassword'),
         'Firstname' => $this->input->post('lfirstname'),
         'Lastname' => $this->input->post('llastname'),
         'Gender' => $this->input->post('lgender'),
-        'Address' => $this->input->post('laddress'),
-        'Postal_Code' => $this->input->post('lpostalcode')
+        'Name'=> $this->input->post('llastname').$this->input->post('lfirstname')
+
         );
         
         $result = $this->userprofiledata->manregister($data);
@@ -88,7 +90,7 @@ class fbdefaultlogin extends CI_Controller {
         {
             $data['loginmessage'] = 'UnsuccessFully Login';
         }
-        $this->load->view("index", $data);
+        redirect('index.php/pages/login');
     }
     
 }
