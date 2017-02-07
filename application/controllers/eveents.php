@@ -14,18 +14,18 @@ class eveents extends CI_Controller
 	 $this->load->helper('url');
 	 $this->load->database();
 	 $this->load->library('form_validation');
-	 //load the student model
+	 //load the events model
 	 $this->load->model('Emodel');
 	}
 	function index()
 	{	
 		//fetch data from duration table
-		$data['duration'] = $this->Emodel->get_duration();
+		//$data['duration'] = $this->Emodel->get_duration();
 		
 		//set validation rules
 		$this->form_validation->set_rules('events_id', 'ID','trim|required|numeric');
 		$this->form_validation->set_rules('event_name', 'Title of Event','trim|required|callback_alpha_only_space');
-		$this->form_validation->set_rules('duration', 'Duration','callback_combo_check');
+		//$this->form_validation->set_rules('duration', 'Duration','callback_combo_check');
 		$this->form_validation->set_rules('event_startdate', 'Date','required');
 		
 		if ($this->form_validation->run() == FALSE)
@@ -39,20 +39,20 @@ class eveents extends CI_Controller
 		$data = array(
 		 'events_id' => $this->input->post('Event ID'),
 		 'event_name' => $this->input->post('Event Name'),
-		 'duration_id' => $this->input->post('Duration'),
+		 //'duration_id' => $this->input->post('Duration'),
 		 'event_startdate' => @date('Y-m-d', @strtotime($this->input->post('Date of Event'))),
 		);
 		//insert the form data into database
 		$this->db->insert('tbl_events', $data);
 		//display success message
 		$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event details added to Database.</div>');
-		redirect('index.php/controllers/pages/eview.php');
+		redirect('eview/index');
 		 }
 }
 	}
 	//custom validation function for dropdown input
-	function combo_check($str)
-	{
+	//function combo_check($str)
+	/*{
 	 if ($str == "-SELECT-")
 	 {
 		$this->form_validation->set_message('combo_check', 'Valid %s Name is required');
@@ -62,7 +62,8 @@ class eveents extends CI_Controller
 	 {
 	return TRUE;
 	 }
-	}
+	}*/
+	
 	//custom validation function to accept only alpha and space input
 	function alpha_only_space($str)
 	{

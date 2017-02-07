@@ -32,7 +32,7 @@
 	 <legend>Add Events Details</legend>
 <?php
 	$attributes = array("class" => "form-horizontal", "id" => "eventform", "name" =>"eventform");
-	 echo form_open("student/index", $attributes);?>
+	 echo form_open('index.php', $attributes);?>
 <fieldset>
 
  <div class="form-group">
@@ -59,21 +59,7 @@
  </div>
  </div>
 
- <div class="form-group">
- <div class="row colbox">
- <div class="col-lg-4 col-sm-4">
- <label for="duration_id" class="control-label">Duration</label>
- </div>
- <div class="col-lg-8 col-sm-8">
-
- <?php
- $attributes = 'class = "form-control" id = "duration"';
- echo form_dropdown('duration',$duration,set_value('duration'),$attributes);?>
  
- <span class="text-danger"><?php echo form_error('duration'); ?></span>
- </div>
- </div>
- </div>
 
  <div class="form-group">
  <div class="row colbox">
@@ -90,10 +76,8 @@ type="text" class="form-control" value="<?php echo set_value('event_startdate');
 
  <div class="form-group">
  <div class="col-sm-offset-4 col-lg-8 col-sm-8 text-left">
-<input id="btn_add" name="btn_add" type="submit" class="btn btn-primary" value="Insert"
-/>
-<input id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-danger"
-value="Cancel" />
+<input id="btn_add" name="btn_add" type="submit" class="btn btn-primary" value="Insert"/>
+<input id="btn_cancel" name="btn_cancel" type="reset" class="btn btn-danger" value="Cancel" />
  </div>
  </div>
 

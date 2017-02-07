@@ -167,9 +167,10 @@ class Pages extends CI_Controller {
 	
 	public function eview()
     {
-		//Article page
+		//Create event page
         $this->load->view('template/header');
         $this->load->view('eview');
         $this->load->view('template/footer');
+
     }
 }

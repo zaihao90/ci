@@ -6,7 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Emodel extends CI_Model
 {
 	//get duration table to populate the duration dropdown
-	 function get_duration()
+	 /*function get_duration()
 	 {
 		 $this->db->select('duration_id');
 		 $this->db->select('duration_name');
@@ -23,6 +23,6 @@ class Emodel extends CI_Model
 		 array_push($duration_name, $result[$i]->duration_name);
 		 }
 		 return $duration_result = array_combine($duration_id, $duration_name);
-	 }
+	 }*/
 }
 ?>
