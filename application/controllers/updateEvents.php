@@ -18,7 +18,7 @@ class updateEvent	 extends CI_Controller
 	}
 	function index($idevents)
 	
-		{
+	{
 	 $data['idevents'] = $idevents;
 
 	 //fetch data from events table
@@ -65,7 +65,8 @@ class updateEvent	 extends CI_Controller
 	 {
 	//return TRUE;
 	 }
-	}
+}
+	
 	//custom validation function to accept only alpha and space input
 	function alpha_only_space($str)
 	{
@@ -79,6 +80,4 @@ class updateEvent	 extends CI_Controller
 	 {
 	return TRUE;
 	 }
-	}
-	}
-	?>
+	}?>

@@ -11,12 +11,12 @@
 	 <div class="row">
 	 <div class="col-lg-12 col-sm-12">
 	<table class="table table-striped table-hover">
-		<thead>
+	<thead>
 			<tr>
 				<th>#</th>
 				<th>Event Name</th>
 			</tr>
- </thead>
+	</thead>
  <tbody>
 	<?php for ($i = 0; $i < count($eventlist); ++$i) { ?>
 	<tr>

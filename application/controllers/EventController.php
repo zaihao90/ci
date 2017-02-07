@@ -3,7 +3,7 @@
 * File Name: EventController.php
 */
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class event extends Controller
+class EventController extends CI_Controller
 {
 	public function __construct()
 	{
@@ -19,36 +19,36 @@ class event extends Controller
 
 	function index()
 	{
-	//fetch data from event table
-	 $data['eventname'] = $this->EventsModel->get_eventname();
- 
-	 //set validation rules
-	$this->form_validation->set_rules('idevents', 'Event ID','trim|required|numeric');
-	$this->form_validation->set_rules('eventname', 'Event Name','trim|required|callback_alpha_only_space');
-	$this->form_validation->set_rules('eventstartdate', 'Date of Event','required');
+		//fetch data from event table
+		 $data['eventname'] = $this->EventsModel->get_eventname();
+	 
+		 //set validation rules
+		$this->form_validation->set_rules('idevents', 'Event ID','trim|required|numeric');
+		$this->form_validation->set_rules('eventname', 'Event Name','trim|required|callback_alpha_only_space');
+		$this->form_validation->set_rules('eventstartdate', 'Date of Event','required');
 
-	 if ($this->form_validation->run() == FALSE)
-		 {
-		//fail validation
-		$this->load->view('EventView', $data);
-		 }
-		 else
-		 {
-			//pass validation
-			$data = array(
-			 'idevents' => $this->input->post('ID'),
-			 'eventname' => $this->input->post('Title of Event'),
-			 'eventstartdate' => @date('Y-m-d', @strtotime($this->input->post('Date'))),);
+		 if ($this->form_validation->run() == FALSE)
+		{
+			//fail validation
+			$this->load->view('EventView', $data);
+		}
+		else
+		{
+				//pass validation
+				$data = array(
+				 'idevents' => $this->input->post('ID'),
+				 'eventname' => $this->input->post('Title of Event'),
+				 'eventstartdate' => @date('Y-m-d', @strtotime($this->input->post('Date'))),);
 
-		 //insert the form data into database
-		$this->db->insert('events', $data);
+				 //insert the form data into database
+				$this->db->insert('events', $data);
 
-		//display success message
-		$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event details added to Database.</div>');
-		redirect('event/index');
-		 }
+				//display success message
+				$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event details added to Database.</div>');
+				redirect('index.php/pages/eventview');
 		}
 	}
+	
 
 	//custom validation function for dropdown input
 	//function combo_check($str)
@@ -66,15 +66,15 @@ class event extends Controller
 		//custom validation function to accept only alpha and space input
 		function alpha_only_space($str)
 		{
-		 if (!preg_match("/^([-a-z ])+$/i", $str))
-		 {
-		$this->form_validation->set_message('alpha_only_space', 'The %s field must contain only alphabets or spaces');
-		return FALSE;
-		 }
-		 else
-		 {
-		return TRUE;
-		 }
+			 if (!preg_match("/^([-a-z ])+$/i", $str))
+			 {
+				$this->form_validation->set_message('alpha_only_space', 'The %s field must contain only alphabets or spaces');
+				return FALSE;
+			 }
+			 else
+			 {
+				return TRUE;
+			 }
 		}
 }
 ?>
