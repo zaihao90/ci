@@ -17,15 +17,33 @@ class events extends CI_Controller {
 	 * So any other public methods not prefixed with an underscore will
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 
 	 */
-	public function getEvents(){    
+	 
+	 public function __construct()
+	 {
+		 parent::__construct();
+		 $this->load->library('session');		
+		 $this->load->helper('url');
+		 $this->load->database();		 
+	}
+
+	public function getEvents(){
+		$this->load->model('Event_User_Model');
+		$events= $this->Event_User_Model->get_events();  
+        $data['events'] = $events;		
 	    $this->load->view('template/header');
-		$this->load->view('events/all_events');
+		$this->load->view('events/all_events' ,$data);
 		$this->load->view('template/footer');
     }
 	
-	public function getEventDetails(){		
+	public function getEventDetails($event_no){
+        $this->load->model('Event_User_Model');
+		$event['event_detail'] = $this->Event_User_Model->get_event_details($event_no);
+		$event['fav_count'] = $this->Event_User_Model->get_article_fav_counts($event_no);
+		$event['comment_count'] = $this->Event_User_Model->get_article_comments_counts($event_no);
+		$event['comments'] = $this->Event_User_Model->get_all_comments_details($event_no);
 		$this->load->view('template/header');
-		$this->load->view('events/eventDetails');	
+		$this->load->view('events/eventDetails' ,$event);	
 	}
 }
