@@ -93,11 +93,11 @@ class Pages extends CI_Controller {
         $this->load->view('template/footer');
     }
 	
-	public function event_view()
+	public function update_event_view()
     {
-		//Read event page
+		//Update event page
         $this->load->view('template/header');
-        $this->load->view('Event_View');
+        $this->load->view('update_event_view');
         $this->load->view('template/footer');
     }
 	
@@ -106,6 +106,14 @@ class Pages extends CI_Controller {
 		//Delete event page
         $this->load->view('template/header');
         $this->load->view('delete_event_view');
+        $this->load->view('template/footer');
+    }
+	
+	public function article()
+    {
+		//Article page
+        $this->load->view('template/header');
+        $this->load->view('article_view');
         $this->load->view('template/footer');
     }
 }

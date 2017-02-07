@@ -27,22 +27,28 @@
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <div class="single-service">
 							<i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
-                        <a href="eventview"><h2>Events</h2></a>
-                        <p><h3>Create and upload the details for your events.</h3></p>
+                        <p><h2>Upload the details for your events.</h2></p>
+						<a href="eventview"><h3>Create Event</h3></a>
+						<a href="update_event_view"><h3>Update Event</h3></a>
+						<a href="delete_event_view"><h3>Delete Event</h3></a>
+						</ul>
                     </div>
                 </div>
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="single-service">
 							<i class="fa fa-newspaper-o fa-5x" aria-hidden="true"></i> 
-                        <a><h2>Articles</h2></a>
-                        <p><h3>Share interesting articles with the community.</h3></p>
+                        <p><h2>Share articles with the Community.</h2></p>
+						<a href="eventview"><h3>Create Article</h3></a>
+						<a href="update_event_view"><h3>Update Article</h3></a>
+						<a href="delete_event_view"><h3>Delete Article</h3></a>
                     </div>
                 </div>
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
                     <div class="single-service">
 							<i class="fa fa-users fa-5x" aria-hidden="true"></i>
-                        <a><h2>Users</h2></a>
-                        <p><h3>Manage the accessibility of your users.</h3></p>
+                         <p><h2>Manage the accessibility of your users.</h2></p>
+						<a><h3>Users</h3></a>
+
                     </div>
                 </div>
             </div>

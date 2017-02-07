@@ -91,7 +91,7 @@ if(!isset($_SESSION)){session_start();}
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="<?php echo base_url(); ?>">
-                    	<h1><img src="<?php echo base_url(); ?>assets/images/logo.png" alt="logo"></h1>
+                    	<h1>Community Connect</h1>
                     </a>                    
                 </div>
                 <div class="collapse navbar-collapse">

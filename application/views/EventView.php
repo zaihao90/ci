@@ -34,7 +34,7 @@
 			<legend>Add Event Details</legend>
 <?php
 	$attributes = array("class" => "form-horizontal", "id" => "eventform", "name" =>"eventform");
-			echo form_open("event/index", $attributes);?>
+			echo form_open("e/index", $attributes);?>
 		<fieldset>
 
 			<div class="form-group">
