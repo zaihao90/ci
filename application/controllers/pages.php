@@ -164,4 +164,12 @@ class Pages extends CI_Controller {
         $this->load->view('article_view');
         $this->load->view('template/footer');
     }
+	
+	public function eview()
+    {
+		//Article page
+        $this->load->view('template/header');
+        $this->load->view('eview');
+        $this->load->view('template/footer');
+    }
 }
