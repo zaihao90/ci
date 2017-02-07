@@ -26,9 +26,7 @@ class Pages extends CI_Controller {
     $this->load->helper('url');
     $this->load->helper('form'); //loading form helper
     }
-
-
-
+	
     public function index()
     {       
         $this->load->view('template/header');
@@ -74,6 +72,12 @@ class Pages extends CI_Controller {
         $this->load->view('manregi');
         $this->load->view('template/footer');
     }
+	
+    public function aboutus()    {
+		$this->load->view('template/header');
+        $this->load->view('aboutus');
+	}	
+
     public function adminpage()
     {
         $this->load->view('template/header');

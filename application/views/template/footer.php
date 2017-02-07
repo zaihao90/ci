@@ -6,7 +6,7 @@
                     <img src="<?php echo base_url(); ?>assets/images/home/under.png" class="img-responsive inline" alt="">
                 </div>
           
-                <!-- <div class="col-md-4 col-sm-6">
+               <div class="col-md-4 col-sm-6">
                     <div class="testimonial bottom">
                         <h2>Testimonial</h2>
                         <div class="media">
@@ -71,7 +71,7 @@
                         <p>&copy; Your Company 2014. All Rights Reserved.</p>
                         <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
                     </div>
-                </div>-->
+                </div>
             </div>
         </div>
     </footer>
