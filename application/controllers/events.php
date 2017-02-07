@@ -20,12 +20,12 @@ class events extends CI_Controller {
 	 */
 	public function getEvents(){    
 	    $this->load->view('template/header');
-		$this->load->view('events/blog');
+		$this->load->view('events/all_events');
 		$this->load->view('template/footer');
     }
 	
 	public function getEventDetails(){		
 		$this->load->view('template/header');
-		$this->load->view('events/blogdetails');	
+		$this->load->view('events/eventDetails');	
 	}
 }
