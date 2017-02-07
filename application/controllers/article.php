@@ -30,8 +30,8 @@ class article extends CI_Controller
 	'callback_combo_check');
 	$this->form_validation->set_rules('participatedDate', 'Participated Date',
 	'required');
-	$this->form_validation->set_rules('article', 'Article',
-	'trim|required|callback_alpha_only_space');
+	$this->form_validation->set_rules('article', 'Article'
+	);
 	
 	if ($this->form_validation->run() == FALSE)
 		 {
@@ -54,7 +54,7 @@ class article extends CI_Controller
 		//display success message
 		$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Article Entry
 		details added to Database!!!</div>');
-		redirect('article/index');
+		redirect('index.php/article/index');
 		 }
 
 	}

@@ -112,8 +112,25 @@ class Pages extends CI_Controller {
 	public function article()
     {
 		//Article page
+	
+		//$this->load->model('article'); 
+		//$attributes = $this->article->index(); 		
         $this->load->view('template/header');
         $this->load->view('article_view');
+        $this->load->view('template/footer');
+    }
+		public function updateArticle()
+    {
+		//Article page
+        $this->load->view('template/header');
+        $this->load->view('update_article_view');
+        $this->load->view('template/footer');
+    }
+		public function deleteArticle()
+    {
+		//Article page
+        $this->load->view('template/header');
+        $this->load->view('delete_article_view');
         $this->load->view('template/footer');
     }
 }

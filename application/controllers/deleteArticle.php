@@ -17,7 +17,9 @@ public function __construct()
  function index()
  {
  //get the participant list
- $data['participant_list'] = $this->Articlemodel->get_participant_list();
+
+ $data['participant_list'] = $this->Articlemodel->get_article_list();
+ 
  $this->load->view('delete_article_view', $data);
  }
  //delete article record from db
@@ -26,7 +28,7 @@ public function __construct()
  //delete article record
  $this->db->where('participant_id', $id);
  $this->db->delete('tbl_article');
- redirect('deleteArticle/index');
+ redirect('index.php/deleteArticle/index');
  }
 }
 ?>

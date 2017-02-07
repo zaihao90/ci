@@ -13,7 +13,7 @@ class updateArticle extends CI_Controller
 	 $this->load->helper('url');
 	 $this->load->database();
 	 $this->load->library('form_validation');
-	 //load the student model
+	 //load the article model
 	 $this->load->model('Articlemodel');
 	}
 	function index($participantno)
@@ -21,11 +21,11 @@ class updateArticle extends CI_Controller
 	
 	$data['participantno'] = $participantno;
 
-	 //fetch data from school table
+	 //fetch data from event table
 	 $data['event'] = $this->Articlemodel->get_event();
 
-	 //fetch student record for the given student no.
-	 $data['participantrecord'] = $this->Articlemodel->get_participant_record($participantno);
+	 //fetch participant record for the given participant no.
+	 $data['participantrecord'] = $this->Articlemodel->get_article_record($participantno);
 
 	 //set validation rules
 	$this->form_validation->set_rules('participantname', 'Participant Name',
@@ -44,8 +44,8 @@ class updateArticle extends CI_Controller
 	 {
 	//pass validation
 	$data = array(
-	 'participant_name' => $this->input->post('participantname'),
-	 'event_id' => $this->input->post('event'),
+	'participant_name' => $this->input->post('participantname'),
+	'eventid' => $this->input->post('event'),
 	'participated_date' => @date('Y-m-d', @strtotime($this->input->post('participatedDate'))),
 	'article' => $this->input->post('article'),
 	);
@@ -55,7 +55,7 @@ class updateArticle extends CI_Controller
 	//display success message
 	$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Article
 	Record is Successfully Updated!</div>');
-	redirect('updateArticle/index/' . $participantno);
+	redirect('index.php/updateArticle/index/' . $participantno);
 	 }
 	}
 //custom validation function for dropdown input
