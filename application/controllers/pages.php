@@ -85,4 +85,27 @@ class Pages extends CI_Controller {
         $this->load->view('template/footer');
     }
 
+	public function eventview()
+    {
+		//Create event page
+        $this->load->view('template/header');
+        $this->load->view('EventView');
+        $this->load->view('template/footer');
+    }
+	
+	public function event_view()
+    {
+		//Read event page
+        $this->load->view('template/header');
+        $this->load->view('Event_View');
+        $this->load->view('template/footer');
+    }
+	
+	public function delete_event_view()
+    {
+		//Delete event page
+        $this->load->view('template/header');
+        $this->load->view('delete_event_view');
+        $this->load->view('template/footer');
+    }
 }

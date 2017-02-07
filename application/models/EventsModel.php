@@ -21,7 +21,7 @@ class EventsModel extends Model
 	 }
 	 
 	//fetch student record by event id
-	 function get_event_record($idevents)
+	 function get_events_record($idevents)
 	 {
 	 $this->db->where('idevents', $idevents);
 	 $this->db->from('events');

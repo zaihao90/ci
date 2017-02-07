@@ -68,8 +68,7 @@ class event extends Controller
 		{
 		 if (!preg_match("/^([-a-z ])+$/i", $str))
 		 {
-		$this->form_validation->set_message('alpha_only_space', 'The %s field
-		must contain only alphabets or spaces');
+		$this->form_validation->set_message('alpha_only_space', 'The %s field must contain only alphabets or spaces');
 		return FALSE;
 		 }
 		 else
