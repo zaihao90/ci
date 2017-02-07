@@ -101,14 +101,14 @@ if(!isset($_SESSION)){session_start();}
                         <li class="dropdown"><a href="<?php echo base_url(); ?>index.php/article/getArticles">Article</a></li>                  
                         <li class="dropdown"><a href="<?php echo base_url(); ?>index.php/events/getEvents">Events</a>             
                         </li>
-                        <li class="dropdown"><a href="portfolio.html">Gallery<i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a href="#">Gallery<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="portfolio.html">Events</a></li>
-                                <li><a href="portfoliofour.html">Articles</a></li>                              
-                                <li><a href="portfolio-details.html">Others</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/gallery/getgallery">Events</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/gallery/getgallery">Articles</a></li>                              
+                                <li><a href="<?php echo base_url(); ?>index.php/gallery/getgallery">Others</a></li>
                             </ul>
                         </li>                         
-                        <li><a href="<?php site_url('aboutus');?>">About Us</a></li>                    
+                        <li><a href="<?php echo base_url(); ?>index.php/pages/aboutus">About Us</a></li>                    
                     </ul>
                 </div>
                 <!--<div class="search">
