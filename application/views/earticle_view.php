@@ -1,6 +1,6 @@
 <html>
  <head>
- <title>Event Article Lists</title>
+ <title>Community Connect</title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <!--link the bootstrap css file-->
  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -83,7 +83,7 @@ type="text/css"/>
 
  <?php for ($i = 0; $i < count($earticlelist); ++$i) { ?>
 	
-	<p><?php echo $earticlelist[$i]->event_name; ?></p>
+	<p>Event Name<?php echo $earticlelist[$i]->event_name; ?></p>
 	<p>Participant Name : <?php echo $earticlelist[$i]->participant_name; ?> </p>
 	<p>Article</br><?php echo $earticlelist[$i]->article; ?></p>
  </div>
