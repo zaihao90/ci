@@ -56,6 +56,7 @@ class userprofiledata extends CI_Model{
     
     function manlogin($data)
     {
+        
         $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."' and Password = '".$data['Password']."'";
         $query =  $this->db->query($sql);
          if($query->num_rows() >0 )
@@ -77,8 +78,29 @@ class userprofiledata extends CI_Model{
          }
         elseif($query->num_rows() == 0 )
         {
-            $_SESSION['errormessage'] = "UnSuccessfully Login";
-            redirect('index.php/');
+            $sqladmin = "SELECT * FROM adminprofile WHERE Email = '".$data['Email']."' and Password = '".$data['Password']."'";
+            $queryadmin =  $this->db->query($sqladmin);
+             if($queryadmin->num_rows() >0 )
+             {
+                foreach($queryadmin->result() as $row){
+                if($row->Name != null)
+                {
+                    $_SESSION['name'] = $row->Name;
+                }
+                if($row->Email != null)
+                {
+                    $_SESSION['email'] = $row->Email;
+                }
+                
+            }    
+            $_SESSION['errormessage'] = "";
+            redirect('index.php/pages/adminpage');
+             }
+            elseif($query->num_rows() == 0 )
+            {
+                $_SESSION['errormessage'] = "UnSuccessfully Login";
+                redirect('index.php/');
+            }
         }
         
     }

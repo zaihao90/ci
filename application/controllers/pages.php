@@ -74,12 +74,11 @@ class Pages extends CI_Controller {
         $this->load->view('manregi');
         $this->load->view('template/footer');
     }
-    public function aboutus2()
+    public function adminpage()
     {
-        $this->load->view('aboutus2.html');
+        $this->load->view('template/header');
+        $this->load->view('adminpage');
+        $this->load->view('template/footer');
     }
-    public function aboutus()
-    {
-        $this->load->view('aboutus.html');
-    }
+
 }
