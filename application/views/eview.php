@@ -42,8 +42,7 @@
  <label for="events_id" class="control-label">Event ID</label>
  </div>
  <div class="col-lg-8 col-sm-8">
-<input id="events_id" name="events_id" placeholder="ID" type="text"
-class="form-control" value="<?php echo set_value('events_id'); ?>" />
+<input id="events_id" name="events_id" placeholder="ID" type="text" class="form-control" value="<?php echo set_value('events_id'); ?>" />
  <span class="text-danger"><?php echo form_error('events_id'); ?></span>
  </div>
  </div>
@@ -54,8 +53,7 @@ class="form-control" value="<?php echo set_value('events_id'); ?>" />
  <label for="event_name" class="control-label">Event Name</label>
  </div>
  <div class="col-lg-8 col-sm-8">
-<input id="event_name" name="event_name" placeholder="Title of Event" type="text"
-class="form-control" value="<?php echo set_value('event_name'); ?>" />
+<input id="event_name" name="event_name" placeholder="Title of Event" type="text" class="form-control" value="<?php echo set_value('event_name'); ?>" />
  <span class="text-danger"><?php echo form_error('event_name'); ?></span>
  </div>
  </div>
@@ -64,13 +62,13 @@ class="form-control" value="<?php echo set_value('event_name'); ?>" />
  <div class="form-group">
  <div class="row colbox">
  <div class="col-lg-4 col-sm-4">
- <label for="school" class="control-label">Duration</label>
+ <label for="duration_id" class="control-label">Duration</label>
  </div>
  <div class="col-lg-8 col-sm-8">
 
  <?php
  $attributes = 'class = "form-control" id = "duration"';
- echo form_dropdown('duration',$school,set_value('duration'),$attributes);?>
+ echo form_dropdown('duration',$duration,set_value('duration'),$attributes);?>
  
  <span class="text-danger"><?php echo form_error('duration'); ?></span>
  </div>

@@ -15,23 +15,23 @@ class eveents extends CI_Controller
 	 $this->load->database();
 	 $this->load->library('form_validation');
 	 //load the student model
-	 $this->load->model('Studentmodel');
+	 $this->load->model('Emodel');
 	}
 	function index()
 	{	
-		//fetch data from school table
+		//fetch data from duration table
 		$data['duration'] = $this->Emodel->get_duration();
 		
 		//set validation rules
 		$this->form_validation->set_rules('events_id', 'ID','trim|required|numeric');
 		$this->form_validation->set_rules('event_name', 'Title of Event','trim|required|callback_alpha_only_space');
 		$this->form_validation->set_rules('duration', 'Duration','callback_combo_check');
-		$this->form_validation->set_rules('event_startdate', 'Registered Date','required');
+		$this->form_validation->set_rules('event_startdate', 'Date','required');
 		
 		if ($this->form_validation->run() == FALSE)
 		 {
 		//fail validation
-		$this->load->view('student_view', $data);
+		$this->load->view('eview', $data);
 		 }
 		 else
 		 {
@@ -39,14 +39,14 @@ class eveents extends CI_Controller
 		$data = array(
 		 'events_id' => $this->input->post('Event ID'),
 		 'event_name' => $this->input->post('Event Name'),
-		 'school_id' => $this->input->post('school'),
+		 'duration_id' => $this->input->post('Duration'),
 		 'event_startdate' => @date('Y-m-d', @strtotime($this->input->post('Date of Event'))),
 		);
 		//insert the form data into database
-		$this->db->insert('tbl_student', $data);
+		$this->db->insert('tbl_events', $data);
 		//display success message
 		$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event details added to Database.</div>');
-		redirect('student/index');
+		redirect('index.php/controllers/pages/eview.php');
 		 }
 }
 	}

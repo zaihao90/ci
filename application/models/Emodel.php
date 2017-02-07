@@ -14,7 +14,7 @@ class Emodel extends CI_Model
 		 $query = $this->db->get();
 		 $result = $query->result();
 		 
-		 //array to store department id & department name
+		 //array to store duration id & duration name
 		 $duration_id = array('-SELECT-');
 		 $duration_name = array('-SELECT-');
 		 for ($i = 0; $i < count($result); $i++)
@@ -22,7 +22,7 @@ class Emodel extends CI_Model
 		 array_push($duration_id, $result[$i]->duration_id);
 		 array_push($duration_name, $result[$i]->duration_name);
 		 }
-		 return $school_result = array_combine($duration_id, $duration_name);
+		 return $duration_result = array_combine($duration_id, $duration_name);
 	 }
 }
 ?>
