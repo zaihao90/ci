@@ -76,7 +76,7 @@ class Pages extends CI_Controller {
     public function aboutus()    {
 		$this->load->view('template/header');
         $this->load->view('aboutus');
-		
+	}	
 
     public function adminpage()
     {
