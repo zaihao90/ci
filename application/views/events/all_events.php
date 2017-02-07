@@ -25,7 +25,7 @@
                          <div class="col-sm-12 col-md-12">
                             <div class="single-blog single-column">
                                 <div class="post-thumb">
-                                    <a href="blogdetails.html"><img src="assets/images/blog/7.jpg" class="img-responsive" alt=""></a>
+                                    <a href="blogdetails.html"><img src="<?php echo base_url(); ?>assets/images/blog/7.jpg" class="img-responsive" alt=""></a>
                                     <div class="post-overlay">
                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
                                    </div>
@@ -37,7 +37,7 @@
                                     <a href="<?php echo base_url(); ?>index.php/events/getEventDetails" class="read-more">View More</a>
                                     <div class="post-bottom overflow">
                                         <ul class="nav navbar-nav post-nav">
-                                            <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
+                                            <li><a href="#"><i class="fa fa-hand-o-up"></i>Join</a></li>
                                             <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
                                             <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
                                         </ul>
@@ -48,7 +48,7 @@
                         <div class="col-sm-12 col-md-12">
                             <div class="single-blog single-column">
                                 <div class="post-thumb">
-                                    <a href="blogdetails.html"><img src="images/blog/8.jpg" class="img-responsive" alt=""></a>
+                                    <a href="blogdetails.html"><img src="<?php echo base_url(); ?>assets/images/blog/8.jpg" class="img-responsive" alt=""></a>
                                     <div class="post-overlay">
                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
                                    </div>
@@ -60,7 +60,7 @@
                                     <a href="#" class="read-more">View More</a>
                                     <div class="post-bottom overflow">
                                         <ul class="nav navbar-nav post-nav">
-                                            <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
+                                            <li><a href="#"><i class="fa fa-hand-o-up"></i>Join</a></li>
                                             <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
                                             <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
                                         </ul>
@@ -71,7 +71,7 @@
                         <div class="col-sm-12 col-md-12">
                             <div class="single-blog single-column">
                                 <div class="post-thumb">
-                                    <a href="blogdetails.html"><img src="images/blog/9.jpg" class="img-responsive" alt=""></a>
+                                    <a href="blogdetails.html"><img src="<?php echo base_url(); ?>assets/images/blog/9.jpg" class="img-responsive" alt=""></a>
                                     <div class="post-overlay">
                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
                                    </div>
@@ -83,7 +83,7 @@
                                     <a href="#" class="read-more">View More</a>
                                     <div class="post-bottom overflow">
                                         <ul class="nav navbar-nav post-nav">
-                                            <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
+                                            <li><a href="#"><i class="fa fa-hand-o-up"></i>Join</a></li>
                                             <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
                                             <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
                                         </ul>
@@ -114,7 +114,7 @@
                             <h3>Comments</h3>
                             <div class="media">
                                 <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project1.jpg" alt=""></a>
+                                    <a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/project1.jpg" alt=""></a>
                                 </div>
                                 <div class="media-body">
                                     <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
@@ -123,7 +123,7 @@
                             </div>
                             <div class="media">
                                 <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project2.jpg" alt=""></a>
+                                    <a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/project2.jpg" alt=""></a>
                                 </div>
                                 <div class="media-body">
                                     <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
@@ -132,47 +132,23 @@
                             </div>
                             <div class="media">
                                 <div class="pull-left">
-                                    <a href="#"><img src="images/portfolio/project3.jpg" alt=""></a>
+                                    <a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/project3.jpg" alt=""></a>
                                 </div>
                                 <div class="media-body">
                                     <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
                                     <p>posted on  07 March 2014</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="sidebar-item categories">
-                            <h3>Categories</h3>
-                            <ul class="nav navbar-stacked">
-                                <li><a href="#">Lorem ipsum<span class="pull-right">(1)</span></a></li>
-                                <li class="active"><a href="#">Dolor sit amet<span class="pull-right">(8)</span></a></li>
-                                <li><a href="#">Adipisicing elit<span class="pull-right">(4)</span></a></li>
-                                <li><a href="#">Sed do<span class="pull-right">(9)</span></a></li>
-                                <li><a href="#">Eiusmod<span class="pull-right">(3)</span></a></li>
-                                <li><a href="#">Mockup<span class="pull-right">(4)</span></a></li>
-                                <li><a href="#">Ut enim ad minim <span class="pull-right">(2)</span></a></li>
-                                <li><a href="#">Veniam, quis nostrud <span class="pull-right">(8)</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="sidebar-item tag-cloud">
-                            <h3>Tag Cloud</h3>
-                            <ul class="nav nav-pills">
-                                <li><a href="#">Corporate</a></li>
-                                <li><a href="#">Joomla</a></li>
-                                <li><a href="#">Abstract</a></li>
-                                <li><a href="#">Creative</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Product</a></li>
-                            </ul>
                         </div>
                         <div class="sidebar-item popular">
                             <h3>Latest Photos</h3>
                             <ul class="gallery">
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular4.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular5.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="images/portfolio/popular1.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular1.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular2.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular3.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular4.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular5.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular1.jpg" alt=""></a></li>
                             </ul>
                         </div>
                     </div>
@@ -182,10 +158,10 @@
     </section>
     <!--/#blog-->
  
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/lightbox.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/wow.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/main.js"></script>   
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/wow.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>   
 </body>
 </html>
