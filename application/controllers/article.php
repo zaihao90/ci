@@ -72,6 +72,7 @@ class article extends CI_Controller
 		return TRUE;
 		 }
 		}
+		
 		//custom validation function to accept only alpha and space input
 		function alpha_only_space($str)
 		{
@@ -86,5 +87,23 @@ class article extends CI_Controller
 		return TRUE;
 		 }
 		}	 
+		
+		
+	public function getArticles()
+	{    
+	    $this->load->view('template/header');
+		$this->load->view('article/blog');
+		$this->load->view('template/footer');
+    }
+	
+	public function getArticlesDetails(){
+		
+		$this->load->view('template/header');
+		$this->load->view('article/blogdetails');
+	
+	}
 }
+
+
+
 ?>
