@@ -7,8 +7,7 @@
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
-                            <h1 class="title">Events</h1>
-                            <!--<p>Blog with right sidebar</p>-->
+                        <h1 class="title">Events</h1>                        
                         </div>
                     </div>
                 </div>
@@ -22,6 +21,7 @@
             <div class="row">
                 <div class="col-md-9 col-sm-7">
                     <div class="row">
+					<?php for ($i = 0; $i < count($events); ++$i) { ?>
                          <div class="col-sm-12 col-md-12">
                             <div class="single-blog single-column">
                                 <div class="post-thumb">
@@ -31,10 +31,10 @@
                                    </div>
                                 </div>
                                 <div class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="<?php echo base_url(); ?>index.php/events/getEventDetails">Advanced business cards design</a></h2>
-                                    <h3 class="post-author"><a href="<?php echo base_url(); ?>index.php/events/getEventDetails">Posted by micron News</a></h3>
-                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
-                                    <a href="<?php echo base_url(); ?>index.php/events/getEventDetails" class="read-more">View More</a>
+                                    <h2 class="post-title bold"><a href="<?php echo base_url(); ?>index.php/events/getEventDetails/<?php echo $events[$i]->idevents;?>"><?php echo $events[$i]->eventname;?></a></h2>
+                                    <p>Start Date :<?php echo $events[$i]->eventstartdate; ?>  End Date :<?php echo $events[$i]->eventenddate; ?>  </p>
+								    <p><?php echo $events[$i]->description; ?></p>
+                                    <a href="<?php echo base_url(); ?>index.php/events/getEventDetails/<?php echo $events[$i]->idevents;?>" class="read-more">View More</a>
                                     <div class="post-bottom overflow">
                                         <ul class="nav navbar-nav post-nav">
                                             <li><a href="#"><i class="fa fa-hand-o-up"></i>Join</a></li>
@@ -45,52 +45,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-12">
-                            <div class="single-blog single-column">
-                                <div class="post-thumb">
-                                    <a href="blogdetails.html"><img src="<?php echo base_url(); ?>assets/images/blog/8.jpg" class="img-responsive" alt=""></a>
-                                    <div class="post-overlay">
-                                       <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                   </div>
-                                </div>
-                                <div class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards design</a></h2>
-                                    <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
-                                    <a href="#" class="read-more">View More</a>
-                                    <div class="post-bottom overflow">
-                                        <ul class="nav navbar-nav post-nav">
-                                            <li><a href="#"><i class="fa fa-hand-o-up"></i>Join</a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                            <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12">
-                            <div class="single-blog single-column">
-                                <div class="post-thumb">
-                                    <a href="blogdetails.html"><img src="<?php echo base_url(); ?>assets/images/blog/9.jpg" class="img-responsive" alt=""></a>
-                                    <div class="post-overlay">
-                                       <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                   </div>
-                                </div>
-                                <div class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards design</a></h2>
-                                    <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
-                                    <a href="#" class="read-more">View More</a>
-                                    <div class="post-bottom overflow">
-                                        <ul class="nav navbar-nav post-nav">
-                                            <li><a href="#"><i class="fa fa-hand-o-up"></i>Join</a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                            <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+						<?php 
+						    }
+						?>	
                     </div>
                     <div class="blog-pagination">
                         <ul class="pagination">
