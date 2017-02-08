@@ -40,7 +40,7 @@
                         <p><h2>Share articles with the Community.</h2></p>
 <<<<<<< HEAD
 						<a href="<?php echo base_url(); ?>index.php/article/index"><h3>Create Article</h3></a>
-						<a href="<?php echo base_url(); ?>index.php/updateArticle/index"><h3>Update Article</h3></a>
+						<a href="<?php echo base_url(); ?>index.php/deleteArticle/index"><h3>Update Article</h3></a>
 						<a href="<?php echo base_url(); ?>index.php/deleteArticle/index"><h3>Delete Article</h3></a>
 =======
 						<a href="earticle"><h3>Create Article</h3></a>
