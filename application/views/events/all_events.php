@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php 
+
+if(!isset($_SESSION)){session_start();}  
+
+  echo $_SESSION['name'];
+?>
 <html lang="en">
 <body>
     <section id="page-breadcrumb">
@@ -37,7 +43,7 @@
                                     <a href="<?php echo base_url(); ?>index.php/events/getEventDetails/<?php echo $events[$i]->idevents;?>" class="read-more">View More</a>
                                     <div class="post-bottom overflow">
                                         <ul class="nav navbar-nav post-nav">
-                                            <li><a href="#"><i class="fa fa-hand-o-up"></i>Join</a></li>
+                                            <li><a href="<?php echo base_url(); ?>index.php/booking/post_booking/<?php echo $events[$i]->idevents;?>"><i class="fa fa-hand-o-up"></i>Join</a></li>
                                             <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
                                             <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
                                         </ul>
