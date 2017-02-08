@@ -1,4 +1,4 @@
-<?php ?>
+
 <html lang="en">
 <body>
     <section id="page-breadcrumb">
@@ -8,7 +8,6 @@
                     <div class="action">
                         <div class="col-sm-12">
                             <h1 class="title">Articles</h1>
-                            <!--<p>Blog with right sidebar</p>-->
                         </div>
                     </div>
                 </div>
@@ -22,6 +21,7 @@
             <div class="row">
                 <div class="col-md-9 col-sm-7">
                     <div class="row">
+					   <?php  for ($i = 0; $i < count($article); ++$i) {?>
                          <div class="col-sm-12 col-md-12">
                             <div class="single-blog single-column">
                                 <div class="post-thumb">
@@ -31,9 +31,9 @@
                                    </div>
                                 </div>
                                 <div class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="<?php echo base_url(); ?>index.php/article/getArticlesDetails">Advanced business cards design</a></h2>
-                                    <h3 class="post-author"><a href="<?php echo base_url(); ?>index.php/article/getArticlesDetails">Posted by micron News</a></h3>
-                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
+                                    <h2 class="post-title bold"><a href="<?php echo base_url(); ?>index.php/article/getArticlesDetails/<?php echo $article[$i]->participant_id ?>"><?php echo $article[$i]->article; ?></a></h2>
+                                    <h3 class="post-author"><a href="<?php echo base_url(); ?>index.php/article/getArticlesDetails">Posted On : <?php echo $article[$i]->participated_date; ?></a></h3>
+                                    <p><?php echo $article[$i]->article; ?></p>
                                     <a href="<?php echo base_url(); ?>index.php/article/getArticlesDetails" class="read-more">View More</a>
                                     <div class="post-bottom overflow">
                                         <ul class="nav navbar-nav post-nav">                                            
@@ -44,50 +44,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-12">
-                            <div class="single-blog single-column">
-                                <div class="post-thumb">
-                                    <a href="blogdetails.html"><img src="<?php echo base_url(); ?>assets/images/blog/8.jpg" class="img-responsive" alt=""></a>
-                                    <div class="post-overlay">
-                                       <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                   </div>
-                                </div>
-                                <div class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards design</a></h2>
-                                    <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
-                                    <a href="#" class="read-more">View More</a>
-                                    <div class="post-bottom overflow">
-                                        <ul class="nav navbar-nav post-nav">                                          
-                                            <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                            <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12">
-                            <div class="single-blog single-column">
-                                <div class="post-thumb">
-                                    <a href="blogdetails.html"><img src="<?php echo base_url(); ?>assets/images/blog/9.jpg" class="img-responsive" alt=""></a>
-                                    <div class="post-overlay">
-                                       <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                   </div>
-                                </div>
-                                <div class="post-content overflow">
-                                    <h2 class="post-title bold"><a href="blogdetails.html">Advanced business cards design</a></h2>
-                                    <h3 class="post-author"><a href="#">Posted by micron News</a></h3>
-                                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber [...]</p>
-                                    <a href="#" class="read-more">View More</a>
-                                    <div class="post-bottom overflow">
-                                        <ul class="nav navbar-nav post-nav">                                           
-                                            <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-                                            <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+					   <?php } ?> 
                     </div>
                     <div class="blog-pagination">
                         <ul class="pagination">
@@ -107,35 +64,26 @@
                  </div>
                 <div class="col-md-3 col-sm-5">
                     <div class="sidebar blog-sidebar">
-                        <div class="sidebar-item  recent">
-                            <h3>Comments</h3>
+                        <div class="sidebar-item  recent">					
+                         <h3>Comments</h3>
+						  <?php for ($i = 0; $i < count($articles_comments); ++$i) {?>
                             <div class="media">
                                 <div class="pull-left">
                                     <a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/project1.jpg" alt=""></a>
                                 </div>
                                 <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
+                                    <h4><a href="#"><?php echo $articles_comments[$i]->comments; ?></a></h4>
+									<?php 
+									  $CSday = substr($articles_comments[$i]->time_created,8, 2);
+									  $CSmonth = substr($articles_comments[$i]->time_created,5, 2);
+									  $CSyear = substr($articles_comments[$i]->time_created, 0,4);
+									  $CSdateObj = DateTime::createFromFormat('!m', $CSmonth);
+									  $CSmonthName = $CSdateObj->format('F');													 
+									 ?>	
+                                    <p>posted on  <?php echo $CSday; ?>&nbsp;<?php echo $CSmonthName;?>&nbsp;<?php  echo $CSyear;?></p>
                                 </div>
                             </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/project2.jpg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/project3.jpg" alt=""></a>
-                                </div>
-                                <div class="media-body">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit,</a></h4>
-                                    <p>posted on  07 March 2014</p>
-                                </div>
-                            </div>
+                            <?php  } ?>
                         </div>
                         <div class="sidebar-item popular">
                             <h3>Latest Photos</h3>

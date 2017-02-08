@@ -93,17 +93,23 @@ class article extends CI_Controller
 		
 		
 	public function getArticles()
-	{    
+	{   
+        $this->load->model('article_user_model');	
+		$article['article']=  $this->article_user_model->get_articles(); 	
+		$article['articles_comments'] = $this->article_user_model->getAllComments();	
 	    $this->load->view('template/header');
-		$this->load->view('article/all_Articles');
+		$this->load->view('article/all_Articles' ,$article);
 		$this->load->view('template/footer');
     }
 	
-	public function getArticlesDetails(){
-		
-		$this->load->view('template/header');
+	public function getArticlesDetails($article_id){
+		$this->load->model('article_user_model');	
+		$article['article_detail'] = $this->article_user_model->get_article_details($article_id); 	
+ 		$article['article_fav_counts'] = $this->article_user_model->get_article_fav_counts($article_id);
+		$article['article_comment_counts'] = $this->article_user_model->get_article_comments_counts($article_id);
+		$article['article_comments'] = $this->article_user_model->get_all_comments_details($article_id);
+		$this->load->view('template/header' ,$article);
 		$this->load->view('article/articleDetails');
-	
 	}
 }
 
