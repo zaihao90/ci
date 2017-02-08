@@ -11,15 +11,15 @@ class Articlemodel extends CI_Model
  parent::__construct();
  }
   //fetch all participant records
-	 function get_participant_list()
+	 function get_article_list()
 	 {
 	 $this->db->from('tbl_article');
-	 $this->db->join('tbl_earticle', 'tbl_article.event_id = tbl_earticle.event_id');
+	 $this->db->join('events', 'tbl_article.event_id = events.idevents');
 	 $query = $this->db->get();
 	 return $query->result();
 	 }
  //fetch participant record by participant no
-	 function get_participant_record($participantno)
+	 function get_article_record($participantno)
 	 {
 	 $this->db->where('participant_no', $participantno);
 	 $this->db->from('tbl_article');
@@ -29,20 +29,20 @@ class Articlemodel extends CI_Model
  //get earticle table to populate the event name dropdown
 	 function get_event()
 	 {
-	 $this->db->select('event_id');
-	 $this->db->select('event_name');
-	 $this->db->from('tbl_earticle');
+	 $this->db->select('idevents');
+	 $this->db->select('eventname');
+	 $this->db->from('events');
 	 $query = $this->db->get();
 	 $result = $query->result();
 	 //array to store department id & department name
-	 $event_id = array('-SELECT-');
-	 $event_name = array('-SELECT-');
+	 $idevents = array('-SELECT-');
+	 $eventname = array('-SELECT-');
 	 for ($i = 0; $i < count($result); $i++)
 	 {
-	 array_push($event_id, $result[$i]->event_id);
-	 array_push($event_name, $result[$i]->event_name);
+	 array_push($idevents, $result[$i]->idevents);
+	 array_push($eventname, $result[$i]->eventname);
 	 }
-	 return $event_result = array_combine($event_id, $event_name);
+	 return $event_result = array_combine($idevents, $eventname);
 	}
 }
 ?>

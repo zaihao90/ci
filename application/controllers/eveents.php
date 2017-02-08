@@ -47,7 +47,7 @@ class eveents extends CI_Controller
 		
 		//display success message
 		$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event details added to Database.</div>');
-		redirect('eveents/index');
+		redirect('index.php/eveents/index');
 		 }
 }
 }

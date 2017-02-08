@@ -38,9 +38,15 @@
                     <div class="single-service">
 							<i class="fa fa-newspaper-o fa-5x" aria-hidden="true"></i> 
                         <p><h2>Share articles with the Community.</h2></p>
+<<<<<<< HEAD
+						<a href="<?php echo base_url(); ?>index.php/article/index"><h3>Create Article</h3></a>
+						<a href="<?php echo base_url(); ?>index.php/deleteArticle/index"><h3>Update Article</h3></a>
+						<a href="<?php echo base_url(); ?>index.php/deleteArticle/index"><h3>Delete Article</h3></a>
+=======
 						<a href="earticle"><h3>Create Article</h3></a>
 						<a href="article_view"><h3>Update Article</h3></a>
 						<a href="delete_article_view"><h3>Delete Article</h3></a>
+>>>>>>> origin/master
                     </div>
                 </div>
                 <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
