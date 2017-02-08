@@ -50,6 +50,9 @@
                                     </div>                                    
                                     <div class="response-area">
                                     <h2 class="bold">Comments</h2>
+									<ul class="media-list">
+									
+									</ul>
                                     <ul class="media-list">
 									<?php for ($i = 0; $i < count($article_comments); ++$i) { ?>
                                         <li class="media">
