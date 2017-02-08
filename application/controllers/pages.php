@@ -167,7 +167,7 @@ class Pages extends CI_Controller {
         $this->load->view('article_view');
         $this->load->view('template/footer');
     }
-<<<<<<< HEAD
+<<<<<<<HEAD
 		public function updateArticle()
     {
 		//Article page

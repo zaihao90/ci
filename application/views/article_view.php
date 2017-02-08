@@ -94,6 +94,19 @@ type="text" class="form-control" value="<?php echo set_value('participatedDate')
  </div>
  </div>
  
+   <div class="form-group">
+ <div class="row colbox">
+ <div class="col-lg-4 col-sm-4">
+ <label for="article" class="control-label">Article Title</label>
+ </div>
+ <div class="col-lg-8 col-sm-8">
+<input id="articletitle" name="articletitle" placeholder="Article Title " type="text" 
+class="form-control" style=" height:400px;text-align:top-left;padding: 20px;"value="<?php echo set_value('articletitle'); ?>" />
+ <span class="text-danger"><?php echo form_error('articletitle'); ?></span>
+ </div>
+ </div>
+ </div>
+ 
   <div class="form-group">
  <div class="row colbox">
  <div class="col-lg-4 col-sm-4">

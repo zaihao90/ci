@@ -30,6 +30,8 @@ class article extends CI_Controller
 	'callback_combo_check');
 	$this->form_validation->set_rules('participatedDate', 'Participated Date',
 	'required');
+	$this->form_validation->set_rules('artiletitle', 'Article Title',
+	'trim|required|callback_alpha_only_space');
 	$this->form_validation->set_rules('article', 'Article'
 	);
 	
@@ -46,6 +48,7 @@ class article extends CI_Controller
 		 'participant_name' => $this->input->post('participantname'),
 		 'event_id' => $this->input->post('event'),
 		'participated_date' => @date('Y-m-d', @strtotime($this->input->post('participatedDate'))),
+		 'articletitle' => $this->input->post('articletitle'),
 		'article' => $this->input->post('article'),
 		);
 		
