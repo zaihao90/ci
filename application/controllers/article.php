@@ -92,14 +92,14 @@ class article extends CI_Controller
 	public function getArticles()
 	{    
 	    $this->load->view('template/header');
-		$this->load->view('article/blog');
+		$this->load->view('article/all_Articles');
 		$this->load->view('template/footer');
     }
 	
 	public function getArticlesDetails(){
 		
 		$this->load->view('template/header');
-		$this->load->view('article/blogdetails');
+		$this->load->view('article/articleDetails');
 	
 	}
 }

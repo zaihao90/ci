@@ -73,12 +73,10 @@ $attributes = array("class" => "form-horizontal", "id" => "participantform", "na
  </div>
  <div class="col-md-8">
 	<?php
-	// $attributes = 'class = "form-control" id = "event"';
-	//echo form_dropdown('event',$event,set_value('event', $participantrecord[0]->event),
-	//$attributes);?>
-		<input id="event" name="event" placeholder="Event "
-	type="text" class="form-control" value="<?php echo set_value('event',
-	$participantrecord[0]->eventid); ?>" />
+	$attributes = 'class = "form-control" id = "event"';
+	echo form_dropdown('event',$event,set_value('event', $participantrecord[0]->eventid),
+	$attributes);?>
+
 	 <span class="text-danger"><?php echo form_error('event'); ?></span>
  </div>
  </div>

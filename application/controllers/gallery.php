@@ -18,14 +18,36 @@ class gallery extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function getgallery(){    
+	public function get_event_gallery(){    
 	    $this->load->view('template/header');
-		$this->load->view('gallery/galleries');
+		$this->load->view('gallery/galleries_events');
 		$this->load->view('template/footer');
     }
 	
-	public function getGalleryDetails(){		
+	public function get_event_GalleryDetails(){		
 		$this->load->view('template/header');
-		$this->load->view('gallery/galleryDetails');	
+		$this->load->view('gallery/gallery_event_Details');	
+	}
+	
+	public function get_article_gallery(){    
+	    $this->load->view('template/header');
+		$this->load->view('gallery/galleries_events');
+		$this->load->view('template/footer');
+    }
+	
+	public function get_article_GalleryDetails(){		
+		$this->load->view('template/header');
+		$this->load->view('gallery/gallery_event_Details');	
+	}
+	
+	public function get_others_gallery(){    
+	    $this->load->view('template/header');
+		$this->load->view('gallery/galleries_events');
+		$this->load->view('template/footer');
+    }
+	
+	public function get_others_GalleryDetails(){		
+		$this->load->view('template/header');
+		$this->load->view('gallery/gallery_event_Details');	
 	}
 }

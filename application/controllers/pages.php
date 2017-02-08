@@ -25,6 +25,11 @@ class Pages extends CI_Controller {
     // Load url helper
     $this->load->helper('url');
     $this->load->helper('form'); //loading form helper
+	
+	$this->load->library('session');
+	$this->load->database();
+	$this->load->library('form_validation');
+	
     }
 	
     public function index()
@@ -87,10 +92,40 @@ class Pages extends CI_Controller {
 
 	public function eventview()
     {
+		//load the event model
+		 $this->load->model('EventsModel');
+		//fetch data from event table
+		 //$data['eventname'] = $this->EventsModel->get_eventname();
+	 
+		 //set validation rules
+		$this->form_validation->set_rules('idevents', 'Event ID','trim|required|numeric');
+		$this->form_validation->set_rules('eventname', 'Event Name','trim|required');
+		$this->form_validation->set_rules('eventstartdate', 'Date of Event','required');
+
+		 if ($this->form_validation->run() == FALSE)
+		{
+			//fail validation
+			$this->load->view('template/header');
+			$this->load->view('EventView', $data);
+			$this->load->view('template/footer');
+		}
+		else
+		{
+				//pass validation
+				$data = array(
+				 'idevents' => $this->input->post('ID'),
+				 'eventname' => $this->input->post('Title of Event'),
+				 'eventstartdate' => @date('Y-m-d', @strtotime($this->input->post('Date'))),);
+
+				 //insert the form data into database
+				$this->db->insert('events', $data);
+
+				//display success message
+				$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event details added to Database.</div>');
+				redirect('event/index');
+		}
 		//Create event page
-        $this->load->view('template/header');
-        $this->load->view('EventView');
-        $this->load->view('template/footer');
+        
     }
 	
 	public function update_event_view()
@@ -103,11 +138,24 @@ class Pages extends CI_Controller {
 	
 	public function delete_event_view()
     {
+		
+		//load the event model
+		 $this->load->model('EventsModel');
+		 $data = $this->EventsModel->get_events_list();  
 		//Delete event page
         $this->load->view('template/header');
-        $this->load->view('delete_event_view');
+        $this->load->view('delete_event_view', $data);
         $this->load->view('template/footer');
     }
+	
+	//delete event function 
+	public function edelete($id){
+	echo $id;
+	
+			//load the event model
+		 $this->load->model('EventsModel');
+		 $data = $this->EventsModel-> deleteevent($id); 
+	}
 	
 	public function article()
     {
@@ -119,12 +167,13 @@ class Pages extends CI_Controller {
         $this->load->view('article_view');
         $this->load->view('template/footer');
     }
+<<<<<<< HEAD
 		public function updateArticle()
     {
 		//Article page
 
         $this->load->view('template/header');
-        $this->load->view('update_article_view',$participantno);
+        $this->load->view('update_article_view');
         $this->load->view('template/footer');
     }
 		public function deleteArticle()
@@ -133,5 +182,15 @@ class Pages extends CI_Controller {
         $this->load->view('template/header');
         $this->load->view('delete_article_view');
         $this->load->view('template/footer');
+=======
+	
+	public function eview()
+    {
+		//Create event page
+        $this->load->view('template/header');
+        $this->load->view('eview');
+        $this->load->view('template/footer');
+
+>>>>>>> origin/master
     }
 }
