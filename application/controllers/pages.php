@@ -150,9 +150,8 @@ class Pages extends CI_Controller {
 	
 	//delete event function 
 	public function edelete($id){
-	echo $id;
-	
-			//load the event model
+	      echo $id;	
+		 //load the event model
 		 $this->load->model('EventsModel');
 		 $data = $this->EventsModel-> deleteevent($id); 
 	}
@@ -167,7 +166,7 @@ class Pages extends CI_Controller {
         $this->load->view('article_view');
         $this->load->view('template/footer');
     }
-<<<<<<<HEAD
+
 		public function updateArticle()
     {
 		//Article page
@@ -182,7 +181,7 @@ class Pages extends CI_Controller {
         $this->load->view('template/header');
         $this->load->view('delete_article_view');
         $this->load->view('template/footer');
-=======
+    }
 	
 	public function eview()
     {
@@ -190,7 +189,5 @@ class Pages extends CI_Controller {
         $this->load->view('template/header');
         $this->load->view('eview');
         $this->load->view('template/footer');
-
->>>>>>> origin/master
     }
 }
