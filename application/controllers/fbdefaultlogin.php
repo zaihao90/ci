@@ -23,26 +23,17 @@ class fbdefaultlogin extends CI_Controller {
             'IdUserProfileFB' =>  $_SESSION['userid']
         );
         //Transfering data to Model
-
        $result = $this->userprofiledata->fbinsert($data);
-
-        //$datamessage['message'] = 'Data Inserted Successfully';
-        //Loading View
-                //header('Location: http://localhost:8888/ci/index.php');
         if($result == 1)
         {
             $this->load->view('template/header');
 		      $this->load->view('index');
             $this->load->view('template/footer');
-           // $data['loginmessage'] = 'SuccessFully Login Using Facebook';
         }
         else
         {
             $data['loginmessage'] = 'UnsuccessFully Login , Something Wrong';
         }
-        
-
-            //$this->load->view('index');
         
 	}	
     public function manualreg()

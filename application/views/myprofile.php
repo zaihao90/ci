@@ -128,7 +128,7 @@ $("#txtDate").val($.datepicker.formatDate('dd M yy', new Date()));
             <td class="label">Birthday:</td>
 
             <td class="wideField" colspan="2">
-                <input class="field" id="datepicker" name="birthdate" readonly="readonly" value="<?php echo $Birthdate; ?>" > 
+                <input class="field" id="datepicker" name="birthdate" readonly="readonly" value="<?php if(isset($Birthdate)){echo $Birthdate;} ?>" > 
             </td>
             <td>
             #DD-MM-YYYY

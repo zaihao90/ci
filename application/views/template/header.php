@@ -45,7 +45,7 @@ if(!isset($_SESSION)){session_start();}
                    <div class="social-icons pull-right">
                         <ul class="nav nav-pills">
                             <li>
-                             <?php  if(isset($_SESSION['errormessage']))
+                             <?php   if(isset($_SESSION['errormessage']))
                                     {   
                                         if($_SESSION['errormessage'] == "Register Successfully")
                                         {
@@ -108,7 +108,10 @@ if(!isset($_SESSION)){session_start();}
                                 <li><a href="<?php echo base_url(); ?>index.php/gallery/getgallery">Others</a></li>
                             </ul>
                         </li>                         
-                        <li><a href="<?php echo base_url(); ?>index.php/pages/aboutus">About Us</a></li>                    
+                        <li><a href="<?php echo base_url(); ?>index.php/pages/aboutus">About Us</a></li>   
+                        <?php if(isset($_SESSION['email'])){ ?>
+                        <li><a href="<?php echo base_url(); ?>index.php/pages/friendlist">Friends List</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!--<div class="search">

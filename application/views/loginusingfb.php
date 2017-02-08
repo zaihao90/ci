@@ -60,14 +60,12 @@ if (isset($accessToken)) {
 	try {
 		$profile_request = $fb->get('/me?fields=name,first_name,last_name,email');
 		$profile = $profile_request->getGraphNode()->asArray();
+        
         $_SESSION['name'] = $profile['name'];
         $_SESSION['first_name'] = $profile['first_name'];
         $_SESSION['last_name'] = $profile['last_name'];
         $_SESSION['email'] = $profile['email'];
         $_SESSION['userid'] = $profile['id'];
-        
-    
-        
         
         $data = array(
             'name'      => $profile['name'],
@@ -78,8 +76,8 @@ if (isset($accessToken)) {
         );
          
       //  $this->load->controller('insertdata',$profile);
-
-        header('Location: http://localhost:8888/ci/index.php/fbdefaultlogin/loginandregister');
+       
+       header('Location: http://localhost:8888/ci/index.php/fbdefaultlogin/loginandregister');
 
 
 	} catch(Facebook\Exceptions\FacebookResponseException $e) {
@@ -108,10 +106,11 @@ if (isset($accessToken)) {
  ?><table align="center" ><tr><td align="right"><?php
     // Open form and set URL for submit form
     //echo form_open('fbdefaultlogin/manuallogin');
-   if(isset($_SESSION['errormessage']))
+
+   /*if(isset($_SESSION['errormessage']))
     {   
         echo '<span style="color:green;">'.$_SESSION['errormessage'].'</span>';
-    } 
+    }*/ 
     echo form_open('index.php/fbdefaultlogin/manuallogin', ['class' => 'form', 'method' => 'POST']);
         // Show Name Field in View Page
         echo form_label('Email :', 'lemail');

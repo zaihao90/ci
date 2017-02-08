@@ -48,7 +48,7 @@
     echo form_label('Confirm Password:', 'lconpassword');
     $logdata= array(
     'style'=>'width:200px',    
-    'type' => 'confpassword',
+    'type' => 'password',
     'name' => 'lconpassword',
     'placeholder' => 'Please Enter Your Confirm Password',
     'class' => 'input_box',

@@ -46,4 +46,13 @@ class events extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('events/eventDetails' ,$event);	
 	}
+    public function invitefriendevent($id)
+    {
+        echo $id;
+        //go to invite event page
+        $this->load->view('template/header');
+        $this->load->view('events/inviteevent');
+        $this->load->view('template/footer');
+    
+    }
 }

@@ -26,7 +26,7 @@ class Pages extends CI_Controller {
     $this->load->helper('url');
     $this->load->helper('form'); //loading form helper
 	
-	$this->load->library('session');
+	//$this->load->library('session');
 	$this->load->database();
 	$this->load->library('form_validation');
 	
@@ -46,6 +46,21 @@ class Pages extends CI_Controller {
         $this->load->view('loginusingfb');
         $this->load->view('template/footer');
     }
+    public function friendlist()
+    {
+        //go to friendlist page
+        $this->load->view('template/header');
+        $this->load->view('friendlist');
+        $this->load->view('template/footer');
+    }
+    public function addfriend(){
+        
+        //go to addfriend page
+        $this->load->view('template/header');
+        $this->load->view('addfriend');
+        $this->load->view('template/footer');
+    }
+            
     public function myprofile()
     {
         //go to profile page    getfbprofiledata
@@ -58,7 +73,6 @@ class Pages extends CI_Controller {
     }
     public function updateprofile()
     {
-        
         $this->load->model('userprofiledata');
          $dataprofile =   $this->userprofiledata->updateprofile();  //calling your method from model
        
@@ -166,13 +180,9 @@ class Pages extends CI_Controller {
         $this->load->view('article_view');
         $this->load->view('template/footer');
     }
-<<<<<<< HEAD
-	
-	public function updateArticle()
-=======
 
 		public function updateArticle()
->>>>>>> origin/master
+
     {
 		//Article page
 
@@ -186,22 +196,16 @@ class Pages extends CI_Controller {
         $this->load->view('template/header');
         $this->load->view('delete_article_view');
         $this->load->view('template/footer');
-<<<<<<< HEAD
+
     }		
-=======
-    }
-	
->>>>>>> origin/master
+
+
 	public function eview()
     {
 		//Create event page
         $this->load->view('template/header');
         $this->load->view('eview');
         $this->load->view('template/footer');
-<<<<<<< HEAD
-		
-=======
->>>>>>> origin/master
     }
 }
 

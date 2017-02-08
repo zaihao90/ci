@@ -46,6 +46,7 @@ if(!isset($_SESSION)){session_start();}
                                             <li><a href="<?php echo base_url(); ?>index.php/booking/post_booking/<?php echo $events[$i]->idevents;?>"><i class="fa fa-hand-o-up"></i>Join</a></li>
                                             <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
                                             <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
+                                            <li><a href="<?php echo base_url(); ?>index.php/events/invitefriendevent/<?php echo $i ?>""><i class="fa fa-comments"></i>Invite Friends</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -10,9 +10,6 @@ class userprofiledata extends CI_Model{
     
 
     function fbinsert($data){
-      
-    // Inserting in Table(students) of Database(college)
-       // echo "hhh";
     $sql = "SELECT * FROM userprofilefb WHERE IdUserProfileFB = '".$data['IdUserProfileFB']."'";
     $query =  $this->db->query($sql);
         if($query->num_rows() < 1)
@@ -26,6 +23,7 @@ class userprofiledata extends CI_Model{
             foreach($query->result() as $row){
                 $check = 0;
                 //check if the fb data is different from database data
+
                 if($row->Name != $data['Name'])
                 {
                     $check +=1;
@@ -46,7 +44,7 @@ class userprofiledata extends CI_Model{
                 {
                     echo $check;
                     //update the whole query
-                    $this->db->where($data['IdUserProfileFB'], $data['IdUserProfileFB']);
+                    $this->db->where('IdUserProfileFB', $data['IdUserProfileFB']);
                     $this->db->update('userprofilefb', $data);
                 }
             }
@@ -56,76 +54,92 @@ class userprofiledata extends CI_Model{
     
     function manlogin($data)
     {
-        
-        $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."' and Password = '".$data['Password']."'";
-        $query =  $this->db->query($sql);
-         if($query->num_rows() >0 )
-         {
-            foreach($query->result() as $row){
-                if($row->Name != null)
-                {
-                    $_SESSION['name'] = $row->Name;
-                }
-                if($row->Email != null)
-                {
-                    $_SESSION['email'] = $row->Email;
-                }
-                
-            }    
-            $_SESSION['errormessage'] = "";
-            redirect('index.php/');
-
-         }
-        elseif($query->num_rows() == 0 )
+        if (preg_match('/[\'^£$%&*()}{#~?><>,|=_+¬-]/', $data['Email']) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $data['Password']))
         {
-            $sqladmin = "SELECT * FROM adminprofile WHERE Email = '".$data['Email']."' and Password = '".$data['Password']."'";
-            $queryadmin =  $this->db->query($sqladmin);
-             if($queryadmin->num_rows() >0 )
-             {
-                foreach($queryadmin->result() as $row){
-                if($row->Name != null)
+            // one or more of the 'special characters' found in $string
+
+                $_SESSION['errormessage'] = "Sorry No Special Characters is allowed";
+                redirect('index.php/pages/login');
+        }else
+        {
+                $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."' and Password = '".$data['Password']."'";
+                $query =  $this->db->query($sql);
+                 if($query->num_rows() >0 )
+                 {
+                    foreach($query->result() as $row){
+                        if($row->Name != null)
+                        {
+                            $_SESSION['name'] = $row->Name;
+                        }
+                        if($row->Email != null)
+                        {
+                            $_SESSION['email'] = $row->Email;
+                        }
+                        $_SESSION['errormessage'] = "";
+                    redirect('index.php/');
+                    }    
+
+
+                 }
+                elseif($query->num_rows() == 0 )
                 {
-                    $_SESSION['name'] = $row->Name;
+                    $sqladmin = "SELECT * FROM adminprofile WHERE Email = '".$data['Email']."' and Password = '".$data['Password']."'";
+                    $queryadmin =  $this->db->query($sqladmin);
+                     if($queryadmin->num_rows() >0 )
+                     {
+                        foreach($queryadmin->result() as $row){
+                        if($row->Name != null)
+                        {
+                            $_SESSION['name'] = $row->Name;
+                        }
+                        if($row->Email != null)
+                        {
+                            $_SESSION['email'] = $row->Email;
+                        }
+                    }    
+                    $_SESSION['errormessage'] = "";
+                    redirect('index.php/pages/adminpage');
+                     }
+                    elseif($query->num_rows() == 0 )
+                    {
+                        $_SESSION['errormessage'] = "UnSuccessfully Login";
+                        redirect('index.php/');
+                    }
                 }
-                if($row->Email != null)
-                {
-                    $_SESSION['email'] = $row->Email;
-                }
-                
-            }    
-            $_SESSION['errormessage'] = "";
-            redirect('index.php/pages/adminpage');
-             }
-            elseif($query->num_rows() == 0 )
-            {
-                $_SESSION['errormessage'] = "UnSuccessfully Login";
-                redirect('index.php/');
             }
-        }
-        
     }
     function manregister($data){
-
-    $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."'";
-    $query =  $this->db->query($sql);
-    $result = $query->num_rows();
-  
         
-    $sqlfb = "SELECT * FROM userprofilefb WHERE Email = '".$data['Email']."'";
-    $queryfb =  $this->db->query($sqlfb);
-    $resultfb = $queryfb->num_rows();
-
-        if($result !=1 && $resultfb !=1)
-        {
-              
-            $this->db->insert("userprofile", $data); 
-            $_SESSION['errormessage'] = "Register Successfully";
+    if (preg_match('/[\'^£$%&*()}{#~?><>,|=_+¬-]/', $data['Email']) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $data['Password'])|| preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $data['Firstname'])|| preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $data['Lastname']))
+    {
+        // one or more of the 'special characters' found in $string
+            $_SESSION['errormessage'] = "Sorry No Special Characters is allowed";
             redirect('index.php/pages/login');
-        }
-        else
-        {
-            $_SESSION['errormessage'] = "Email Have Been Used";
-            redirect('index.php/pages/manregi');
+    }else
+    {
+
+
+        $sql = "SELECT * FROM userprofile WHERE Email = '".$data['Email']."'";
+        $query =  $this->db->query($sql);
+        $result = $query->num_rows();
+
+
+        $sqlfb = "SELECT * FROM userprofilefb WHERE Email = '".$data['Email']."'";
+        $queryfb =  $this->db->query($sqlfb);
+        $resultfb = $queryfb->num_rows();
+
+            if($result !=1 && $resultfb !=1)
+            {
+
+                $this->db->insert("userprofile", $data); 
+                $_SESSION['errormessage'] = "Register Successfully";
+                redirect('index.php/pages/login');
+            }
+            else
+            {
+                $_SESSION['errormessage'] = "Email Have Been Used";
+                redirect('index.php/pages/manregi');
+            }
         }
     }
 
