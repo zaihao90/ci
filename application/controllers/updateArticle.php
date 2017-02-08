@@ -16,24 +16,24 @@ class updateArticle extends CI_Controller
 	 //load the article model
 	 $this->load->model('Articlemodel');
 	}
-	function index($participantno)
+	function index()
 	{
 	
-	$data['participantno'] = $participantno;
+	//$data['participantno'] = $participantno;
 
 	 //fetch data from event table
-	 $data['event'] = $this->Articlemodel->get_event();
+	// $data['event'] = $this->Articlemodel->get_event();
 
 	 //fetch participant record for the given participant no.
-	 $data['participantrecord'] = $this->Articlemodel->get_article_record($participantno);
-
+	 $data['participantrecord'] = $this->Articlemodel->get_article_list();
+	 
 	 //set validation rules
 	$this->form_validation->set_rules('participantname', 'Participant Name',
 	'trim|required|callback_alpha_only_space');
 	 $this->form_validation->set_rules('event', 'Event', 'callback_combo_check');
 	 $this->form_validation->set_rules('participatedDate', 'Participated Date', 'required');
 	 $this->form_validation->set_rules('article', 'Article',
-	'trim|required|callback_alpha_only_space');
+	'required');
 	
 	 if ($this->form_validation->run() == FALSE)
 	 {

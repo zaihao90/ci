@@ -122,8 +122,9 @@ class Pages extends CI_Controller {
 		public function updateArticle()
     {
 		//Article page
+
         $this->load->view('template/header');
-        $this->load->view('update_article_view');
+        $this->load->view('update_article_view',$participantno);
         $this->load->view('template/footer');
     }
 		public function deleteArticle()

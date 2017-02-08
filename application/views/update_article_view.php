@@ -37,7 +37,7 @@ type="text/css"/>
  <?php
 $attributes = array("class" => "form-horizontal", "id" => "participantform", "name" =>
 "participantform");
- echo form_open("index.php/updateArticle/index/" . $participantno, $attributes);?>
+ echo form_open("index.php/updateArticle/index/", $attributes);?>
  <fieldset>
 
  <div class="form-group">
@@ -72,10 +72,13 @@ $attributes = array("class" => "form-horizontal", "id" => "participantform", "na
 	<label for="event" class="control-label">Event</label>
  </div>
  <div class="col-md-8">
-	 <?php
-	 $attributes = 'class = "form-control" id = "event"';
-	echo form_dropdown('event',$event,set_value('event', $participantrecord[0]->idevents),
-	$attributes);?>
+	<?php
+	// $attributes = 'class = "form-control" id = "event"';
+	//echo form_dropdown('event',$event,set_value('event', $participantrecord[0]->event),
+	//$attributes);?>
+		<input id="event" name="event" placeholder="Event "
+	type="text" class="form-control" value="<?php echo set_value('event',
+	$participantrecord[0]->eventid); ?>" />
 	 <span class="text-danger"><?php echo form_error('event'); ?></span>
  </div>
  </div>
