@@ -39,27 +39,26 @@
  <div class="row colbox">
 
  <div class="col-lg-4 col-sm-4">
- <label for="events_id" class="control-label">Event ID</label>
+ <label for="eventsid" class="control-label">Event ID</label>
  </div>
  <div class="col-lg-8 col-sm-8">
-<input id="events_id" name="events_id" placeholder="ID" type="text" class="form-control" value="<?php echo set_value('events_id'); ?>" />
- <span class="text-danger"><?php echo form_error('events_id'); ?></span>
+<input id="eventsid" name="eventsid" placeholder="ID" type="text" class="form-control" value="<?php echo set_value('eventsid'); ?>" />
+ <span class="text-danger"><?php echo form_error('eventsid'); ?></span>
  </div>
  </div>
  </div>
  <div class="form-group">
  <div class="row colbox">
  <div class="col-lg-4 col-sm-4">
- <label for="event_name" class="control-label">Event Name</label>
+ <label for="eventname" class="control-label">Event Name</label>
  </div>
  <div class="col-lg-8 col-sm-8">
-<input id="event_name" name="event_name" placeholder="Title of Event" type="text" class="form-control" value="<?php echo set_value('event_name'); ?>" />
- <span class="text-danger"><?php echo form_error('event_name'); ?></span>
+<input id="eventname" name="eventname" placeholder="Title of Event" type="text" class="form-control" value="<?php echo set_value('eventname'); ?>" />
+ <span class="text-danger"><?php echo form_error('eventname'); ?></span>
  </div>
  </div>
  </div>
 
- 
 
  <div class="form-group">
  <div class="row colbox">

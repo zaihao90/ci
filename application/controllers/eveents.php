@@ -40,16 +40,17 @@ class eveents extends CI_Controller
 		 'events_id' => $this->input->post('Event ID'),
 		 'event_name' => $this->input->post('Event Name'),
 		 //'duration_id' => $this->input->post('Duration'),
-		 'event_startdate' => @date('Y-m-d', @strtotime($this->input->post('Date of Event'))),
-		);
+		 'event_startdate' => @date('Y-m-d', @strtotime($this->input->post('Date of Event'))),);
+		
 		//insert the form data into database
 		$this->db->insert('tbl_events', $data);
+		
 		//display success message
 		$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event details added to Database.</div>');
-		redirect('eview/index');
+		redirect('eveents/index');
 		 }
 }
-	}
+}
 	//custom validation function for dropdown input
 	//function combo_check($str)
 	/*{
@@ -67,16 +68,16 @@ class eveents extends CI_Controller
 	//custom validation function to accept only alpha and space input
 	function alpha_only_space($str)
 	{
-	 if (!preg_match("/^([-a-z ])+$/i", $str))
-	 {
-	$this->form_validation->set_message('alpha_only_space', 'The %s field
-	must contain only alphabets or spaces');
-	return FALSE;
-	 }
-	 else
-	 {
-	return TRUE;
-	 }
+		 if (!preg_match("/^([-a-z ])+$/i", $str))
+		 {
+		$this->form_validation->set_message('alpha_only_space', 'The %s field
+		must contain only alphabets or spaces');
+		return FALSE;
+		 }
+		 else
+		 {
+		return TRUE;
+		 }
 	}
 	
 }
