@@ -51,6 +51,8 @@ class Event_User_Model extends CI_Model{
 	 $query = $this->db->get();
 	 return $query->result(); 
  }
+ 
+ 
 	
 }
  
