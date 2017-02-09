@@ -180,8 +180,7 @@ class Pages extends CI_Controller {
         $this->load->view('article_view');
         $this->load->view('template/footer');
     }
-
-		public function updateArticle()
+	public function updateArticle()
 
     {
 		//Article page
@@ -196,11 +195,9 @@ class Pages extends CI_Controller {
         $this->load->view('template/header');
         $this->load->view('delete_article_view');
         $this->load->view('template/footer');
+    }	
 
-    }		
-
-
-	public function eview()
+        public function eview()
     {
 		//Create event page
         $this->load->view('template/header');
