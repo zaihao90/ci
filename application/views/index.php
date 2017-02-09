@@ -12,8 +12,8 @@
         <div class="container">
             <div class="main-slider">
                 <div class="slide-text">
-                    <h1>We Are Creative Nerds</h1>
-                    <p>Boudin doner frankfurter pig. Cow shank bresaola pork loin tri-tip tongue venison pork belly meatloaf short loin landjaeger biltong beef ribs shankle chicken andouille.</p>
+                    <h1>Welcome Youths to our Community Connect</h1>
+                    <p>A place to discover yourself, to develop yourself, to challenge yourself, find your inner interest, to accept yourself along with great people.</p>
                     <a href="#" class="btn btn-common">SIGN UP</a>
                 </div>
                 <img src="<?php echo base_url(); ?>assets/images/home/slider/slide1/house.png" class="img-responsive slider-house" alt="slider image">
