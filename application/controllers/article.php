@@ -111,6 +111,53 @@ class article extends CI_Controller
 		$this->load->view('template/header' ,$article);
 		$this->load->view('article/articleDetails');
 	}
+	
+	public function  postComments($article_id ,$email){
+		$this->form_validation->set_rules('comments' , 'Comments' , 'required');
+		
+		if($this->form_validation->run() == FALSE){			
+		//fail validation
+	    $this->load->model('article_user_model');	
+		$article['article_detail'] = $this->article_user_model->get_article_details($article_id); 	
+ 		$article['article_fav_counts'] = $this->article_user_model->get_article_fav_counts($article_id);
+		$article['article_comment_counts'] = $this->article_user_model->get_article_comments_counts($article_id);
+		$article['article_comments'] = $this->article_user_model->get_all_comments_details($article_id);
+		$this->load->view('template/header' ,$article);
+		$this->load->view('article/articleDetails');
+		
+		}
+		else {
+           $data = array(		    
+		    'comments' => $this->input->post('comments'),
+            'user_id' => $this->uri->segment(4),
+			'article_id' => $this->uri->segment(3),
+			'time_created' => date("Y-m-d"),
+		   );		   
+		  $this->db->insert('article_comments' ,$data);
+		//pass validation		
+		$this->load->model('article_user_model');	
+		$article['article_detail'] = $this->article_user_model->get_article_details($article_id); 	
+ 		$article['article_fav_counts'] = $this->article_user_model->get_article_fav_counts($article_id);
+		$article['article_comment_counts'] = $this->article_user_model->get_article_comments_counts($article_id);
+		$article['article_comments'] = $this->article_user_model->get_all_comments_details($article_id);
+		$this->load->view('template/header' ,$article);
+		$this->load->view('article/articleDetails');
+		}
+	}
+	
+	public function deleteComments ($comment_id , $article_id) {
+		
+		$this->db->where('id',$comment_id);
+		$this->db->delete('article_comments');		
+		//pass validation		
+		$this->load->model('article_user_model');	
+		$article['article_detail'] = $this->article_user_model->get_article_details($article_id); 	
+ 		$article['article_fav_counts'] = $this->article_user_model->get_article_fav_counts($article_id);
+		$article['article_comment_counts'] = $this->article_user_model->get_article_comments_counts($article_id);
+		$article['article_comments'] = $this->article_user_model->get_all_comments_details($article_id);
+		$this->load->view('template/header' ,$article);
+		$this->load->view('article/articleDetails');		
+	}
 }
 
 
