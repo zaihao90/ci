@@ -8,7 +8,7 @@ class updateArticle extends CI_Controller
 	public function __construct()
 	{
 	 parent::__construct();
-	 $this->load->library('session');
+	// $this->load->library('session');
 	 $this->load->helper('form');
 	 $this->load->helper('url');
 	 $this->load->database();
@@ -32,12 +32,15 @@ class updateArticle extends CI_Controller
 	'trim|required|callback_alpha_only_space');
 	 $this->form_validation->set_rules('event', 'Event', 'callback_combo_check');
 	 $this->form_validation->set_rules('participatedDate', 'Participated Date', 'required');
+	 	$this->form_validation->set_rules('articletitle', 'Article Title',
+	'trim|required|callback_alpha_only_space');
 	 $this->form_validation->set_rules('article', 'Article',
 	'required');
 	
 	 if ($this->form_validation->run() == FALSE)
 	 {
 	//fail validation
+	$this->load->view('template/header');
 	$this->load->view('update_article_view', $data);
 	 }
 	 else
@@ -45,17 +48,18 @@ class updateArticle extends CI_Controller
 	//pass validation
 	$data = array(
 	'participant_name' => $this->input->post('participantname'),
-	'eventid' => $this->input->post('event'),
+	'event_id' => $this->input->post('event'),
 	'participated_date' => @date('Y-m-d', @strtotime($this->input->post('participatedDate'))),
+	'articletitle' => $this->input->post('articletitle'),
 	'article' => $this->input->post('article'),
 	);
 	//update employee record
 	$this->db->where('participant_no', $participantno);
 	$this->db->update('tbl_article', $data);
 	//display success message
-	$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Article
-	Record is Successfully Updated!</div>');
-	redirect('index.php/updateArticle/index/' . $participantno);
+	//$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Article
+	//Record is Successfully Updated!</div>');
+	redirect('index.php/deleteArticle/index/' . $participantno);
 	 }
 	}
 //custom validation function for dropdown input
