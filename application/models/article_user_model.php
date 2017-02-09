@@ -55,7 +55,8 @@ class article_user_model extends CI_Model{
 	  $query = $this->db->query($sql);
       $result = $query->result();
       return $result;
- }
+ } 
+ 
 }
  
 
