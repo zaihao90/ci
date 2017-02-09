@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
+<script>
+</script>
 <style>
 .widget-area.blank {
 background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -185,21 +187,15 @@ margin-right: 7px;
                                         <li class="media">
 										    <div class="widget-area no-padding blank">
 								<div class="status-upload">
-									<form action="" method="post">
-										<textarea placeholder="What are you doing right now?" ></textarea>
-										<ul>
-											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
-											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
-											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
-											<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-										</ul>
+ 	                          <form id= "commentBox" action="<?php echo base_url(); ?>index.php/events/postComments/<?php echo $event_detail[0]->idevents;?>/<?php echo  $_SESSION['email'];?>" method="post">
+										<textarea form="commentBox" name="comments" placeholder="Share your thoughts with us.." ></textarea>										
 										<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
-									</form>
+							  </form>
+							
 								</div><!-- Status Upload  -->
 							</div><!-- Widget Area -->
 										</li>
-									</ul>
-								
+									</ul>								
 									<br/>
 									<?php for ($i = 0; $i < count($comments); ++$i) { ?>
 									<ul class="media-list">
@@ -208,16 +204,17 @@ margin-right: 7px;
                                                 <div class="media-body">
                                                     <span><i class="fa fa-user"></i>Posted by <a href="#"><?php echo $comments[$i]->user_id; ?></a></span>
                                                     <p><?php echo $comments[$i]->comments; ?></p>
-                                                    <ul class="nav navbar-nav post-nav">
-													<?php 
-													 $Cday = substr($comments[$i]->time_created,8, 2);
-													 $Cmonth = substr($comments[$i]->time_created,5, 2);
-													 $Cyear = substr($comments[$i]->time_created, 0,4);
-													 $CdateObj = DateTime::createFromFormat('!m', $Cmonth);
-													 $CmonthName = $CdateObj->format('F');
-													 ?>		
-                                                        <li><a href="#"><i class="fa fa-clock-o"></i><?php echo $CmonthName;?>&nbsp;<?php echo $Cday; ?> , <?php  echo $Cyear; ?></a></li>
-                                                        <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
+                                                    <ul class="nav navbar-nav post-nav">												
+                                                       
+                                                        <?php 
+														 if ($_SESSION['email'] == $comments[$i]->user_id ){ ?>															 
+															<li><a href="#"><i class="fa fa-clock-o"></i><?php echo $comments[$i]->time_created ?></a></li>	
+													        <li><a href="<?php echo base_url(); ?>index.php/events/deleteComments/<?php echo $comments[$i]->id;?>/<?php echo $event_detail[0]->idevents?>"><i class="fa fa-trash" aria-hidden="true">&nbsp;Delete</i></li>
+													    
+														<?php } else { ?>
+															 <li><a href="#"><i class="fa fa-clock-o"></i><?php echo $comments[$i]->time_created ?></a></li>
+														<?php } ?>
+														
                                                     </ul>
                                                 </div>
                                             </div>
@@ -231,27 +228,7 @@ margin-right: 7px;
                     </div>
                  </div>
                 <div class="col-md-3 col-sm-5">
-                    <div class="sidebar blog-sidebar">
-					 <?php  if ($comment_count> 0){ ?>
-                          <div class="sidebar-item  recent">						    
-                             <h3><?php echo 'Comments'; ?></h3>							 	
-							 <?php for ($i = 0; $i < count($comments); ++$i) { ?>
-                            <div class="media">                                
-                                <div class="media-body">
-                                    <h4><a href="#"><?php echo $comments[$i]->comments; ?></a></h4>
-									<?php 
-									  $CSday = substr($comments[$i]->time_created,8, 2);
-									  $CSmonth = substr($comments[$i]->time_created,5, 2);
-									  $CSyear = substr($comments[$i]->time_created, 0,4);
-									  $CSdateObj = DateTime::createFromFormat('!m', $Cmonth);
-									  $CSmonthName = $CdateObj->format('F');													 
-									 ?>	
-                                     <p>posted on  <?php echo $CSday; ?>&nbsp;<?php echo $CSmonthName;?>&nbsp;<?php  echo $CSyear; ?></p>
-								</div>
-                            </div>
-							 <?php }?>                           
-                        </div> 
-						<?php } ?>
+                    <div class="sidebar blog-sidebar">					
                         <div class="sidebar-item popular">
                             <h3>Latest Photos</h3>
                             <ul class="gallery">
