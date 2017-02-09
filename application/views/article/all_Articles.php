@@ -41,6 +41,7 @@
                                             <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
                                         </ul>
                                     </div>
+									
                                 </div>
                             </div>
                         </div>
@@ -65,7 +66,7 @@
                 <div class="col-md-3 col-sm-5">
                     <div class="sidebar blog-sidebar">
                         <div class="sidebar-item  recent">					
-                         <h3>Comments</h3>
+                         <h3> Latest Comments</h3>
 						  <?php for ($i = 0; $i < count($articles_comments); ++$i) {?>
                             <div class="media">
                                 <div class="pull-left">

@@ -174,24 +174,20 @@ margin-right: 7px;
                                     </div>                                    
                                     <div class="response-area">
                                     <h2 class="bold">Comments</h2>
-									<ul class="media-list">
+										<ul class="media-list">
                                         <li class="media">
 										    <div class="widget-area no-padding blank">
-												<div class="status-upload">
-													<form action="" method="post">
-														<textarea placeholder="What are you doing right now?" ></textarea>
-														<ul>
-															<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
-															<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
-															<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
-															<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-														</ul>
-														<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
-													</form>
-												</div><!-- Status Upload  -->
-							               </div><!-- Widget Area -->
+								<div class="status-upload">
+ 	                          <form id= "commentBox" action="<?php echo base_url(); ?>index.php/article/postComments/<?php echo $article_detail[0]->participant_id;?>/<?php echo  $_SESSION['email'];?>" method="post">
+										<textarea form="commentBox" name="comments" placeholder="Share your thoughts with us.." ></textarea>										
+										<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+							  </form>
+							
+								</div><!-- Status Upload  -->
+							</div><!-- Widget Area -->
 										</li>
-									</ul>
+									</ul>								
+									<br/>
                                     <ul class="media-list">
 									<?php for ($i = 0; $i < count($article_comments); ++$i) { ?>
                                         <li class="media">
@@ -206,8 +202,17 @@ margin-right: 7px;
 													 $Cyear = substr($article_comments[$i]->time_created, 0,4);
 													 $CdateObj = DateTime::createFromFormat('!m', $Cmonth);
 													 $CmonthName = $CdateObj->format('F');
-													 ?>		
-                                                        <li><a href="#"><i class="fa fa-clock-o"></i><?php echo $CmonthName;?>&nbsp;<?php echo $Cday; ?> , <?php  echo $Cyear; ?></a></li>
+													
+													?>	
+													<?php 
+														 if ($_SESSION['email'] == $article_comments[$i]->user_id ){ ?>															 
+															<li><a href="#"><i class="fa fa-clock-o"></i><?php echo $article_comments[$i]->time_created ?></a></li>	
+													        <li><a href="<?php echo base_url(); ?>index.php/article/deleteComments/<?php echo $article_comments[$i]->id;?>/<?php echo $article_detail[0]->participant_id;?>"><i class="fa fa-trash" aria-hidden="true">&nbsp;Delete</i></li>
+													    
+														<?php } else { ?>
+															 <li><a href="#"><i class="fa fa-clock-o"></i><?php echo $comments[$i]->time_created ?></a></li>
+														<?php } ?>
+                                                        
                                                         <!--<li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>-->
                                                     </ul>
                                                 </div>
