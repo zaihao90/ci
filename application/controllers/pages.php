@@ -46,21 +46,6 @@ class Pages extends CI_Controller {
         $this->load->view('loginusingfb');
         $this->load->view('template/footer');
     }
-    public function friendlist()
-    {
-        //go to friendlist page
-        $this->load->view('template/header');
-        $this->load->view('friendlist');
-        $this->load->view('template/footer');
-    }
-    public function addfriend(){
-        
-        //go to addfriend page
-        $this->load->view('template/header');
-        $this->load->view('addfriend');
-        $this->load->view('template/footer');
-    }
-            
     public function myprofile()
     {
         //go to profile page    getfbprofiledata
@@ -73,6 +58,7 @@ class Pages extends CI_Controller {
     }
     public function updateprofile()
     {
+        
         $this->load->model('userprofiledata');
          $dataprofile =   $this->userprofiledata->updateprofile();  //calling your method from model
        
@@ -163,7 +149,8 @@ class Pages extends CI_Controller {
     }
 	
 	//delete event function 
-	public function edelete($id){
+	public function edelete($id)
+	{
 	      echo $id;	
 		 //load the event model
 		 $this->load->model('EventsModel');
@@ -180,8 +167,8 @@ class Pages extends CI_Controller {
         $this->load->view('article_view');
         $this->load->view('template/footer');
     }
-	public function updateArticle()
 
+	public function updateArticle()
     {
 		//Article page
 
@@ -189,20 +176,24 @@ class Pages extends CI_Controller {
         $this->load->view('update_article_view');
         $this->load->view('template/footer');
     }
-		public function deleteArticle()
+	
+	public function deleteArticle()
     {
 		//Article page
         $this->load->view('template/header');
         $this->load->view('delete_article_view');
         $this->load->view('template/footer');
-    }	
 
-        public function eview()
+	}
+
+
+	public function eview()
     {
 		//Create event page
         $this->load->view('template/header');
         $this->load->view('eview');
         $this->load->view('template/footer');
+
     }
 }
 
