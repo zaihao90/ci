@@ -75,7 +75,7 @@ if(!isset($_SESSION)){session_start();}
                 <div class="col-md-3 col-sm-5">
                     <div class="sidebar blog-sidebar">
                         <div class="sidebar-item  recent">
-                            <h3>Comments</h3>
+                            <h3> Latest Comments</h3>
                             <div class="media">
                                 <div class="pull-left">
                                     <a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/project1.jpg" alt=""></a>
