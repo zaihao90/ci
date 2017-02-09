@@ -46,6 +46,18 @@ class events extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view('events/eventDetails' ,$event);	
 	}
+
+	public function postComments($event_id){
+	    $this->load->model('Event_User_Model');
+		$event['event_detail'] = $this->Event_User_Model->get_event_details($event_id);
+		$event['fav_count'] = $this->Event_User_Model->get_article_fav_counts($event_id);
+		$event['comment_count'] = $this->Event_User_Model->get_article_comments_counts($event_id);
+		$event['comments'] = $this->Event_User_Model->get_all_comments_details($event_id);
+		$this->load->view('template/header');
+		$this->load->view('events/eventDetails' ,$event);	
+	  
+	}
+	
     public function invitefriendevent($id)
     {
         echo $id;
@@ -55,4 +67,5 @@ class events extends CI_Controller {
         $this->load->view('template/footer');
     
     }
+
 }
