@@ -18,8 +18,8 @@ public function __construct()
  {
  //get the participant list
 
- $data['participant_list'] = $this->Articlemodel->get_article_list();
- 
+ $data['participantno'] = $this->Articlemodel->get_article_list();
+ $this->load->view('template/header');
  $this->load->view('delete_article_view', $data);
  }
  //delete article record from db
