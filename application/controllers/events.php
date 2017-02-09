@@ -25,7 +25,8 @@ class events extends CI_Controller {
 		 parent::__construct();
 		 $this->load->library('session');		
 		 $this->load->helper('url');
-		 $this->load->database();		 
+		 $this->load->database();
+		 $this->load->library('form_validation');
 	}
 
 	public function getEvents(){
@@ -47,16 +48,70 @@ class events extends CI_Controller {
 		$this->load->view('events/eventDetails' ,$event);	
 	}
 
-	public function postComments($event_id){
+	public function postComments($event_id, $email){
+		/**
 	    $this->load->model('Event_User_Model');
 		$event['event_detail'] = $this->Event_User_Model->get_event_details($event_id);
 		$event['fav_count'] = $this->Event_User_Model->get_article_fav_counts($event_id);
 		$event['comment_count'] = $this->Event_User_Model->get_article_comments_counts($event_id);
 		$event['comments'] = $this->Event_User_Model->get_all_comments_details($event_id);
 		$this->load->view('template/header');
-		$this->load->view('events/eventDetails' ,$event);	
+		$this->load->view('events/eventDetails' ,$event);*/	
+		
+		$this->form_validation->set_rules('comments' , 'Comments' , 'required');
+		
+		if($this->form_validation->run() == FALSE){			
+			//fail validation
+	    $this->load->model('Event_User_Model');
+		$event['event_detail'] = $this->Event_User_Model->get_event_details($event_id);
+		$event['fav_count'] = $this->Event_User_Model->get_article_fav_counts($event_id);
+		$event['comment_count'] = $this->Event_User_Model->get_article_comments_counts($event_id);
+		$event['comments'] = $this->Event_User_Model->get_all_comments_details($event_id);
+		$this->load->view('template/header');
+		$this->load->view('events/eventDetails' ,$event);
+		
+		}
+		else {
+
+           $data = array(		    
+		    'comments' => $this->input->post('comments'),
+            'user_id' => $this->uri->segment(4),
+			'event_id' => $this->uri->segment(3),
+			'time_created' => date("Y-m-d"),
+		   );		   
+		  $this->db->insert('event_comments' ,$data);
+		//pass validation
+		$this->load->model('Event_User_Model');
+		$event['event_detail'] = $this->Event_User_Model->get_event_details($event_id);
+		$event['fav_count'] = $this->Event_User_Model->get_article_fav_counts($event_id);
+		$event['comment_count'] = $this->Event_User_Model->get_article_comments_counts($event_id);
+		$event['comments'] = $this->Event_User_Model->get_all_comments_details($event_id);
+		$event['errormsg'] = 'Successfully posted comments';
+		$this->load->view('template/header');
+		$this->load->view('events/eventDetails' ,$event);
+		}
 	  
 	}
+	
+	public function deleteComments ($comment_id , $event_id) {
+		
+		$this->db->where('id',$comment_id);
+		$this->db->delete('event_comments');
+		$this->load->model('Event_User_Model');
+		$event['event_detail'] = $this->Event_User_Model->get_event_details($event_id);
+		$event['fav_count'] = $this->Event_User_Model->get_article_fav_counts($event_id);
+		$event['comment_count'] = $this->Event_User_Model->get_article_comments_counts($event_id);
+		$event['comments'] = $this->Event_User_Model->get_all_comments_details($event_id);
+		$event['errormsg'] = 'Successfully posted comments';
+		$this->load->view('template/header');
+		$this->load->view('events/eventDetails' ,$event);		
+	}
+	
+	public function favEvent(){
+		
+		
+	}
+	
 	
     public function invitefriendevent($id)
     {
