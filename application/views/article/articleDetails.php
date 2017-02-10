@@ -148,8 +148,7 @@ margin-right: 7px;
                     <div class="row">
                          <div class="col-md-12 col-sm-12">
                             <div class="single-blog blog-details two-column">
-                                <div class="post-thumb">
-                                    <a href="#"><img src="<?php echo base_url(); ?>assets/images/blog/7.jpg" class="img-responsive" alt=""></a>
+                                <div class="post-thumb">                                 
                                     <div class="post-overlay">
                                         <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
                                     </div>
