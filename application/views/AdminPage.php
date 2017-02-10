@@ -24,38 +24,28 @@
     <section id="services">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="col-sm-6 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <div class="single-service">
 							<i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
                         <p><h2>Upload the details for your events.</h2></p>
-						<a href="eview"><h3>Create Event</h3></a>
-						<a href="update_event_view"><h3>Update Event</h3></a>
-						<a href="delete_event_view"><h3>Delete Event</h3></a>
+						<a href="eview" ><h3>Create Event</h3></a>
+						<a href="update_event_view" ><h3>Update / Delete Article</h3></a>
+					
 						</ul>
                     </div>
                 </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="col-sm-6 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms" style="align:right">
                     <div class="single-service">
 							<i class="fa fa-newspaper-o fa-5x" aria-hidden="true"></i> 
-                        <p><h2>Share articles with the Community.</h2></p>
+                        <p><h2 >Share articles with the Community.</h2></p>
 
-						<a href="<?php echo base_url(); ?>index.php/article/index"><h3>Create Article</h3></a>
-						<a href="<?php echo base_url(); ?>index.php/deleteArticle/index"><h3>Update Article</h3></a>
-						<a href="<?php echo base_url(); ?>index.php/deleteArticle/index"><h3>Delete Article</h3></a>
-
-						<a href="earticle"><h3>Create Article</h3></a>
-						<a href="article_view"><h3>Update Article</h3></a>
+						<a href="<?php echo base_url(); ?>index.php/article/index" ><h3>Create Article</h3></a>
+						<a href="<?php echo base_url(); ?>index.php/deleteArticle/index" ><h3>Update / Delete Article</h3></a>
+					
 
                     </div>
                 </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="single-service">
-							<i class="fa fa-users fa-5x" aria-hidden="true"></i>
-                         <p><h2>Manage the accessibility of your users.</h2></p>
-						<a><h3>Users</h3></a>
 
-                    </div>
-                </div>
             </div>
         </div>
     </section>
