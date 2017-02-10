@@ -86,9 +86,13 @@ $("#txtDate").val($.datepicker.formatDate('dd-mm-yy', new Date()));
 <center>
      <?php  if(isset($_SESSION['userid'])) { ?>
         <img class="img-responsive" src="//graph.facebook.com/<?php echo $_SESSION['userid'] ?>/picture?width=200&height=200" alt="Profile Picture">
-    <?php }else{ ?>
+    <?php }else{ 
+
+        if (!file_exists("assets/images/profileimage/".$Profileimage)) { ?> 
+            <img src="<?php echo base_url(); ?>assets/images/profileimage/Empty.jpg" class="img-responsive"  height="200" width="200" alt="Profile Picture">
+       <?php }else{?>
         <img src="<?php echo base_url(); ?>assets/images/profileimage/<?php if(isset($Profileimage)){echo $Profileimage?><?php }else{ ?>Empty.jpg<?php } ?>" class="img-responsive"  height="200" width="200" alt="Profile Picture">
-    
+     <?php } ?>
     <form enctype="multipart/form-data" action="<?php echo base_url(); ?>/index.php/pages/updateprofilepicture/" method="POST">
         <!--<input type="hidden" name="email" value="<?php //if(isset($_SESSION['email'])){$_SESSION['email'];} ?>" /> -->
         <br>
@@ -114,7 +118,9 @@ $("#txtDate").val($.datepicker.formatDate('dd-mm-yy', new Date()));
     <?php } ?>
     
   
-      <?php echo form_open('/index.php/pages/updateprofile')?> 
+      <?php 
+    $attributes = array('id' => 'updateprofile');
+    echo form_open('/index.php/pages/updateprofile',$attributes)?> 
     <br><br>
     <table id="address" > 
 
@@ -208,14 +214,12 @@ $("#txtDate").val($.datepicker.formatDate('dd-mm-yy', new Date()));
                 <input class="field" id="country"  name="countryname" style="text-transform:uppercase" value="<?php if(isset($Countryname)){echo $Countryname;}  ?>"></td>
         </tr>
         <tr>
-        <td>
+        <td colspan="3">
             <input type="button" value="Cancel" onClick="document.location.href='<?php echo base_url(); ?>index.php';" />   
            
         </td>
-        <td>
-             <button type="reset" value="Reset">Clear</button>
-        </td>
-        <td colspan="2">
+
+        <td >
             <button type="submit" value="Submit">Save Changes</button>    
         </td>
         </tr>
@@ -225,6 +229,7 @@ $("#txtDate").val($.datepicker.formatDate('dd-mm-yy', new Date()));
 <!--    ------------------------------------------End Of Body--------------------------------------------------------->
 
 </div>
+
   <script>
       // This example displays an address form, using the autocomplete feature
       // of the Google Places API to help users fill in the information.
@@ -242,6 +247,7 @@ $("#txtDate").val($.datepicker.formatDate('dd-mm-yy', new Date()));
         country: 'long_name',
         postal_code: 'short_name'
       };
+      
 
       function initAutocomplete() {
         // Create the autocomplete object, restricting the search to geographical
