@@ -35,8 +35,7 @@
                                     <p><?php echo $article[$i]->article; ?></p>
                                     <a href="<?php echo base_url(); ?>index.php/article/getArticlesDetails" class="read-more">View More</a>
                                     <div class="post-bottom overflow">
-                                        <ul class="nav navbar-nav post-nav">                                            
-                                            <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
+                                        <ul class="nav navbar-nav post-nav"> 
                                             <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
                                         </ul>
                                     </div>
@@ -45,28 +44,13 @@
                             </div>
                         </div>
 					   <?php } ?> 
-                    </div>
-                    <div class="blog-pagination">
-                        <ul class="pagination">
-                          <li><a href="#">left</a></li>
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li class="active"><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                          <li><a href="#">6</a></li>
-                          <li><a href="#">7</a></li>
-                          <li><a href="#">8</a></li>
-                          <li><a href="#">9</a></li>
-                          <li><a href="#">right</a></li>
-                        </ul>
-                    </div>
+                    </div>                 
                  </div>
                 <div class="col-md-3 col-sm-5">
                     <div class="sidebar blog-sidebar">
                         <div class="sidebar-item  recent">					
                          <h3> Latest Comments</h3>
-						  <?php for ($i = 0; $i < count($articles_comments); ++$i) {?>
+						  <?php for ($i = 0; $i < 3; ++$i) {?>
                             <div class="media">
                                 <div class="pull-left">
                                     <a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/project1.jpg" alt=""></a>
@@ -86,7 +70,7 @@
                             <?php  } ?>
                         </div>
                         <div class="sidebar-item popular">
-                            
+                             
                         </div>
                     </div>
                 </div>
