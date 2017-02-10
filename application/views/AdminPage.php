@@ -29,7 +29,7 @@
 							<i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
                         <p><h2>Upload the details for your events.</h2></p>
 						<a href="eview" ><h3>Create Event</h3></a>
-						<a href="update_event_view" ><h3>Update / Delete Article</h3></a>
+						<a href="update_event_view" ><h3>Update / Delete Event</h3></a>
 					
 						</ul>
                     </div>
