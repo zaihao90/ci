@@ -149,8 +149,7 @@ margin-right: 7px;
                     <div class="row">
                          <div class="col-md-12 col-sm-12">
                             <div class="single-blog blog-details two-column">
-                                <div class="post-thumb">
-                                    <img src="<?php echo base_url(); ?>assets/images/blog/7.jpg" class="img-responsive" alt="">
+                                <div class="post-thumb">                                
                                     <div class="post-overlay">
 									<?php 
 									 $day = substr($event_detail[0]->eventstartdate,8, 2);
@@ -168,8 +167,7 @@ margin-right: 7px;
 									<p>Location :<?php echo $event_detail[0]->location; ?> </p>
 									<p><?php echo $event_detail[0]->description; ?></p>
                                     <div class="post-bottom overflow">
-                                        <ul class="nav navbar-nav post-nav">                                          
-                                            <li><a href="#"><i class="fa fa-heart"></i><?php echo $fav_count;?> Love</a></li>
+                                        <ul class="nav navbar-nav post-nav"> 
                                             <li><a href="#"><i class="fa fa-comments"></i><?php  echo $comment_count;?> Comments</a></li>
                                         </ul>
                                     </div>
@@ -207,7 +205,7 @@ margin-right: 7px;
                                                     <ul class="nav navbar-nav post-nav">												
                                                        
                                                         <?php 
-														 if ($_SESSION['email'] == $comments[$i]->user_id ){ ?>															 
+														 if ($_SESSION['name'] == $comments[$i]->user_id ){ ?>															 
 															<li><a href="#"><i class="fa fa-clock-o"></i><?php echo $comments[$i]->time_created ?></a></li>	
 													        <li><a href="<?php echo base_url(); ?>index.php/events/deleteComments/<?php echo $comments[$i]->id;?>/<?php echo $event_detail[0]->idevents?>"><i class="fa fa-trash" aria-hidden="true">&nbsp;Delete</i></li>
 													    
@@ -227,20 +225,7 @@ margin-right: 7px;
                         </div>
                     </div>
                  </div>
-                <div class="col-md-3 col-sm-5">
-                    <div class="sidebar blog-sidebar">					
-                        <div class="sidebar-item popular">
-                            <h3>Latest Photos</h3>
-                            <ul class="gallery">
-                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular4.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular5.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="<?php echo base_url(); ?>assets/images/portfolio/popular1.jpg" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="col-md-3 col-sm-5">                  
                 </div>
             </div>
         </div>

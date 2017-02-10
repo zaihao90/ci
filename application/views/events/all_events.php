@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php 
-if(!isset($_SESSION)){session_start();}  
-?>
 <html lang="en">
 <body>
     <section id="page-breadcrumb">
@@ -27,8 +24,7 @@ if(!isset($_SESSION)){session_start();}
 					<?php for ($i = 0; $i < count($events); ++$i) { ?>
                          <div class="col-sm-12 col-md-12">
                             <div class="single-blog single-column">
-                                <div class="post-thumb">
-                                    <a href="blogdetails.html"><img src="<?php echo base_url(); ?>assets/images/blog/7.jpg" class="img-responsive" alt=""></a>
+                                <div class="post-thumb">                                   
                                     <div class="post-overlay">
                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
                                    </div>
@@ -41,7 +37,6 @@ if(!isset($_SESSION)){session_start();}
                                     <div class="post-bottom overflow">
                                         <ul class="nav navbar-nav post-nav">
 											<li><a href="<?php echo base_url(); ?>index.php/booking/post_booking/<?php echo $events[$i]->idevents;?>/<?php echo $_SESSION['email']; ?>"><i class="fa fa-hand-o-up"></i>Join</a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
                                             <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
                                         </ul>
                                     </div>
