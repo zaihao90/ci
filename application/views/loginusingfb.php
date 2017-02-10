@@ -104,29 +104,48 @@ if (isset($accessToken)) {
 } else {
 
  ?><table align="center" ><tr><td align="right"><?php
+    $this->load->library('form_validation');
     // Open form and set URL for submit form
     //echo form_open('fbdefaultlogin/manuallogin');
-
-   /*if(isset($_SESSION['errormessage']))
-    {   
-        echo '<span style="color:green;">'.$_SESSION['errormessage'].'</span>';
-    }*/ 
     echo form_open('index.php/fbdefaultlogin/manuallogin', ['class' => 'form', 'method' => 'POST']);
-        // Show Name Field in View Page
-        echo form_label('Email :', 'lemail');
-        $logdata= array(
-            'style'=>'width:200px',
-            'type'=>'email',
-        'name' => 'lemail',
-        'placeholder' => 'Please Enter Your Email',
-        'class' => 'input_box'
+  if(validation_errors() != false) {
+    echo "<div id='errors'>" . validation_errors() . "</div>" ;
+  }
+    echo form_error('Email');
+    if(isset($_SESSION['errormessagelogin']))
+    {   
+        $attributes = array(
+        'class' => 'class-name-yours', // external or internal css
+        'style' => 'color:red;'     // or inline css, this is black color
         );
-        echo form_input($logdata);
+       // echo form_label(' ', $_SESSION['errormessage']);
+        echo form_label($_SESSION['errormessagelogin'], 'errormsg',$attributes); 
+       // echo '<span style="color:red;">'.$_SESSION['errormessage'].'</span>';
+        unset($_SESSION['errormessagelogin']);
+        
+    }
+    ?><br><br><br><?php
+    
+    // Show Name Field in View Page
+    
+    echo form_label('Email :', 'lemail');
+    $logdata= array(
+        'style'=>'width:200px',
+        'type'=>'text',
+    'name' => 'lemail',
+    'placeholder' => 'Please Enter Your Email',
+    'class' => 'input_box'
+    );
+    echo form_input($logdata);
+
+    
+
     
     ?></td ></tr>
     <tr><td align="right"><?php
     
     echo "<br>";
+   // echo form_error('lpassword');
     // Show Email Field in View Page
     echo form_label('Password:', 'lpassword');
     $logdata= array(

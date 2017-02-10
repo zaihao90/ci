@@ -55,10 +55,11 @@
       changeMonth: true,
       changeYear: true,
      maxDate: "+0M +0D",
-     dateFormat: 'dd/mm/yy',
+     dateFormat: "dd-mm-yy",
+        altFormat: "dd-mm-yy"
     });
   } );
-$("#txtDate").val($.datepicker.formatDate('dd M yy', new Date()));
+$("#txtDate").val($.datepicker.formatDate('dd-mm-yy', new Date()));
       
 
   </script>
@@ -78,17 +79,46 @@ $("#txtDate").val($.datepicker.formatDate('dd M yy', new Date()));
     if(isset($_SESSION['userid']))
     {?>
         You can edit your email address, gender and name on your Facebook <a href="https://www.facebook.com/settings">Account Setting</a> 
-    <?php } ?>
+    
 
     <br><br><br>
-
+    <?php } ?>
 <center>
      <?php  if(isset($_SESSION['userid'])) { ?>
-        <img src="//graph.facebook.com/<?php echo $_SESSION['userid']; ?>/picture?width=200&height=200">
+        <img class="img-responsive" src="//graph.facebook.com/<?php echo $_SESSION['userid'] ?>/picture?width=200&height=200" alt="Profile Picture">
+    <?php }else{ ?>
+        <img src="<?php echo base_url(); ?>assets/images/profileimage/<?php if(isset($Profileimage)){echo $Profileimage?><?php }else{ ?>Empty.jpg<?php } ?>" class="img-responsive"  height="200" width="200" alt="Profile Picture">
+    
+    <form enctype="multipart/form-data" action="<?php echo base_url(); ?>/index.php/pages/updateprofilepicture/" method="POST">
+        <!--<input type="hidden" name="email" value="<?php //if(isset($_SESSION['email'])){$_SESSION['email'];} ?>" /> -->
+        <br>
+        
+         <table id="address" >
+             <tr>
+             <td>
+                <?php  if(isset($_SESSION['imageerror'])){  ?> <span style="color:red;"><?php echo $_SESSION['imageerror'];?> </span><?php  unset($_SESSION['imageerror']); }     ?>
+            </td>
+             </tr>
+            <tr>
+             <td>
+                <input name="userfile" type="file" />
+                </td>
+                <td>
+                 <input type="submit" value="Upload Image" />
+                </td>
+             </tr> 
+        </table>
+        
+       
+    </form>
     <?php } ?>
-    <br><br><br><br>
+    
+  
+      <?php echo form_open('/index.php/pages/updateprofile')?> 
+    <br><br>
     <table id="address" > 
-        <?php echo form_open('/index.php/pages/updateprofile')?>
+
+            
         <tr>
             <td class="label">
               Name:
@@ -152,7 +182,7 @@ $("#txtDate").val($.datepicker.formatDate('dd M yy', new Date()));
         <tr>
             <td class="label">Street address:</td>
             <td class="slimField">
-                <input class="field" id="street_number" name="streetnum" style="text-transform:uppercase" value="<?php if(isset($Doornum)){echo $Doornum;}  ?>">
+                <input class="field" id="street_number" name="streetnum" style="text-transform:uppercase" value="<?php if(isset($Streetnum)){echo $Streetnum;}  ?>">
             </td>
             <td class="wideField" colspan="2">
                 <input class="field" id="route" name="routename"  style="text-transform:uppercase" value="<?php if(isset($Routenum)){echo $Routenum;}?>">

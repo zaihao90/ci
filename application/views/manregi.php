@@ -1,19 +1,24 @@
 
 <center><h1>Manual Registration</h1><table><tr><td>
 <?php
-// Open form and set URL for submit form
-    //echo form_open('fbdefaultlogin/manuallogin');
-   if(isset($_SESSION['errormessage']))
-    {   
-        if($_SESSION['errormessage'] == "Register Successfully")
-        {
-            $_SESSION['errormessage']="";
-        }
-        else
-        echo '<span style="color:red;">'.$_SESSION['errormessage'].'</span>';
-    }
-
     echo form_open('index.php/fbdefaultlogin/manualreg', ['class' => 'form', 'method' => 'POST']);
+    
+    
+    if(isset($_SESSION['errormessagelogin']))
+    {   
+        $attributes = array(
+        'class' => 'class-name-yours', // external or internal css
+        'style' => 'color:red;'     // or inline css, this is black color
+        );
+       // echo form_label(' ', $_SESSION['errormessage']);
+        echo form_label($_SESSION['errormessagelogin'], 'errormsg',$attributes); 
+       // echo '<span style="color:red;">'.$_SESSION['errormessage'].'</span>';
+        unset($_SESSION['errormessagelogin']);
+        
+    }
+    
+    
+     ?><br><br><br><?php
         // Show Name Field in View Page
         echo form_label('Email :', 'lemail');
         $logdata= array(
