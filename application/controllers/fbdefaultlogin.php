@@ -47,31 +47,45 @@ class fbdefaultlogin extends CI_Controller {
         $password = $this->input->post('authPassword');
          // Begin authentication
         };*/
+		if(empty($this->input->post('lemail'))|| empty($this->input->post('lpassword'))||  empty($this->input->post('lfirstname'))|| empty($this->input->post('llastname'))|| empty($this->input->post('lgender'))||empty($this->input->post('lpassword'))||empty($this->input->post('lconpassword')))
+		{	
+				$_SESSION['errormessagelogin'] = "All Fields Must Not Be Empty";
+				redirect('index.php/pages/manregi');
+		}else
+		{
+			if($this->input->post('lpassword') == $this->input->post('lconpassword'))
+			{
+				$data = array(
+				'Email' => $this->input->post('lemail'),
+				'Password' => $this->input->post('lpassword'),
+				'Firstname' => $this->input->post('lfirstname'),
+				'Lastname' => $this->input->post('llastname'),
+				'Gender' => $this->input->post('lgender'),
+				'Name'=> $this->input->post('llastname').$this->input->post('lfirstname')
 
-        $data = array(
-        'Email' => $this->input->post('lemail'),
-        'Password' => $this->input->post('lpassword'),
-        'Firstname' => $this->input->post('lfirstname'),
-        'Lastname' => $this->input->post('llastname'),
-        'Gender' => $this->input->post('lgender'),
-        'Name'=> $this->input->post('llastname').$this->input->post('lfirstname')
-
-        );
-        
-        $result = $this->userprofiledata->manregister($data);
-        
-        if($result == 1)
-        {
-            $_SESSION['errormessagelogin'] = "Register Successfully";
-            redirect('index.php/pages/login');
-        }
-        else
-        {
-               $_SESSION['errormessagelogin'] = "Email Have Been Used";
-               redirect('index.php/pages/manregi');
-        }
-        //$this->load->view("index", $data);
-        redirect('index.php/pages/login');   
+				);
+				
+				$result = $this->userprofiledata->manregister($data);
+				
+				if($result == 1)
+				{
+					$_SESSION['errormessagelogin'] = "Register Successfully";
+					redirect('index.php/pages/login');
+				}
+				else
+				{
+					   $_SESSION['errormessagelogin'] = "Email Have Been Used";
+					   redirect('index.php/pages/manregi');
+				}
+				//$this->load->view("index", $data);
+				redirect('index.php/pages/login'); 
+			}	
+			else
+			{
+				$_SESSION['errormessagelogin'] = "Password and Confirm Password Is Not Match";
+				redirect('index.php/pages/manregi');
+			}
+		}
     }
     public function manuallogin()
     {
