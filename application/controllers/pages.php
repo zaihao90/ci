@@ -96,17 +96,16 @@ class Pages extends CI_Controller {
     {
         $this->load->view('template/header');
         $this->load->view('adminpage');
-        $this->load->view('template/footer');
+       
     }
 
 	public function eventview()
     {
 		//load the event model
-		 $this->load->model('EventsModel');
+		$this->load->model('EventsModel');
 		//fetch data from event table
-		 //$data['eventname'] = $this->EventsModel->get_eventname();
-	 
-		 //set validation rules
+		//$data['eventname'] = $this->EventsModel->get_eventname();	 
+		//set validation rules
 		$this->form_validation->set_rules('idevents', 'Event ID','trim|required|numeric');
 		$this->form_validation->set_rules('eventname', 'Event Name','trim|required');
 		$this->form_validation->set_rules('eventstartdate', 'Date of Event','required');
@@ -137,20 +136,23 @@ class Pages extends CI_Controller {
         
     }
 	
-	public function update_event_view()
+	public function update_event_view($id)
     {
+	    $this->load->model('Emodel');
+	    $data['event_list'] = $this->Emodel->get_events_record($id);
 		//Update event page
         $this->load->view('template/header');
-        $this->load->view('update_event_view');
+        $this->load->view('update_event_view',$data);
         $this->load->view('template/footer');
+		
     }
 	
 	public function delete_event_view()
     {
 		
 		//load the event model
-		 $this->load->model('EventsModel');
-		 $data = $this->EventsModel->get_events_list();  
+		$this->load->model('Emodel');
+		$data['event_list'] = $this->Emodel->get_event_list();  
 		//Delete event page
         $this->load->view('template/header');
         $this->load->view('delete_event_view', $data);
