@@ -70,12 +70,17 @@
                                     </li>
                                     <?php }else{ ?>
                                      <li>
+									  <?php  if(isset($_SESSION['profileimage'])) { ?> 
                                          <?php if (!file_exists("assets/images/profileimage/".$_SESSION['profileimage'])) { ?> 
                                           <img style="border-radius: 100%;" src="<?php echo base_url(); ?>assets/images/profileimage/emptyheaderprofile.png"  class="img-responsive"  height="40" width="50" alt="Profile Picture">
                                          
                                          <?php }else{ ?>
                                          <img style="border-radius: 100%;" src="<?php echo base_url(); ?>assets/images/profileimage/<?php if(isset($_SESSION['profileimage'])){echo $_SESSION['profileimage']?><?php }else{ ?>emptyheaderprofile.png<?php } ?>" class="img-responsive"  height="40" width="50" alt="Profile Picture">
                                          <?php } ?>
+									  <?php } else {?>
+									  <img style="border-radius: 100%;" src="<?php echo base_url(); ?>assets/images/profileimage/emptyheaderprofile.png"  class="img-responsive"  height="40" width="50" alt="Profile Picture">
+									  <?php }?>
+									  
                                     </li>
                                   <?php } ?>
                                     <li><a href="<?php echo base_url(); ?>index.php/pages/logout"> Logout </a></li>
@@ -117,14 +122,7 @@
                             <?php } ?>
                             <li class="dropdown"><a href="<?php echo base_url(); ?>index.php/article/getArticles">Article</a></li>                  
                             <li class="dropdown"><a href="<?php echo base_url(); ?>index.php/events/getEvents">Events</a>             
-                            </li>
-                            <li class="dropdown"><a href="#">Gallery<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="<?php echo base_url(); ?>index.php/gallery/getgallery">Events</a></li>
-                                    <li><a href="<?php echo base_url(); ?>index.php/gallery/getgallery">Articles</a></li>                              
-                                    <li><a href="<?php echo base_url(); ?>index.php/gallery/getgallery">Others</a></li>
-                                </ul>
-                            </li>                         
+                            </li>                                                   
                             <li><a href="<?php echo base_url(); ?>index.php/pages/aboutus">About Us</a></li>   
 
                         </ul>
