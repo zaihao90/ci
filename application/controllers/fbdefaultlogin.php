@@ -8,7 +8,7 @@ class fbdefaultlogin extends CI_Controller {
     parent::__construct();   
     $this->load->model('userprofiledata');
     $this->load->helper('url');
-
+    $this->load->library('form_validation');
     }
    
     
@@ -38,8 +38,16 @@ class fbdefaultlogin extends CI_Controller {
 	}	
     public function manualreg()
     {       
-        
-        
+            /*    $this->form_validation->set_rules('authEmail', 'Email', 'trim|required|valid_email|xss_clean');
+        $this->form_validation->set_rules('authPassword', 'Password', 'trim|required|matches[password]');
+
+        if($this->form_validation->run() !== false){
+        //validation passed
+        $email = $this->input->post('authEmail');
+        $password = $this->input->post('authPassword');
+         // Begin authentication
+        };*/
+
         $data = array(
         'Email' => $this->input->post('lemail'),
         'Password' => $this->input->post('lpassword'),
@@ -54,35 +62,44 @@ class fbdefaultlogin extends CI_Controller {
         
         if($result == 1)
         {
-            $data['loginmessage'] = 'SuccessFully Register , Please Login';
+            $_SESSION['errormessagelogin'] = "Register Successfully";
+            redirect('index.php/pages/login');
         }
         else
         {
-            $data['loginmessage'] = 'UnsuccessFully Register';
+               $_SESSION['errormessagelogin'] = "Email Have Been Used";
+               redirect('index.php/pages/manregi');
         }
-        $this->load->view("index", $data);
-            
+        //$this->load->view("index", $data);
+        redirect('index.php/pages/login');   
     }
     public function manuallogin()
     {
+       
+        if(empty($this->input->post('lemail'))||empty($this->input->post('lpassword')))
+        {
+                $_SESSION['errormessagelogin'] = 'Please Key in Username and Password again!!';
+            redirect('index.php/pages/login');
+        }else{
+            
+        
+            $data = array(
+            'Email' => $this->input->post('lemail'),
+            'Password' => $this->input->post('lpassword')
+            ); 
 
-        $data = array(
-        'Email' => $this->input->post('lemail'),
-        'Password' => $this->input->post('lpassword')
-        ); 
-        
-        $result = $this->userprofiledata->manlogin($data);
-        
-        if($result == 1)
-        {
-            $data['loginmessage'] = 'SuccessFully Login';
+            $result = $this->userprofiledata->manlogin($data);
+
+            if($result == 1)
+            {
+                $_SESSION['errormessagelogin'] = 'SuccessFully Login';
+            }
+            else
+            {
+                $_SESSION['errormessagelogin'] = 'UnsuccessFully Login';
+            }
+            redirect('index.php/pages/login');
         }
-        else
-        {
-            $data['loginmessage'] = 'UnsuccessFully Login';
-        }
-        redirect('index.php/pages/login');
     }
-    
 }
 ?>
