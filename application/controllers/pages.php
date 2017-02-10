@@ -128,20 +128,57 @@ class Pages extends CI_Controller {
         
     }
 	
-	public function update_event_view()
+	public function update_event_view($id)
     {
+	    $this->load->model('Emodel');
+	    $data['event_list'] = $this->Emodel->get_events_record($id);
 		//Update event page
         $this->load->view('template/header');
-        $this->load->view('update_event_view');
+        $this->load->view('update_event_view',$data);
         $this->load->view('template/footer');
+		
     }
+	
+	public function eupdate($id){
+		$data['eventsid'] = $id;
+
+
+		$this->load->model('Emodel');
+		$data['event_list'] = $this->Emodel->get_events_record($id);  
+
+		//set validation rules
+		// $this->form_validation->set_rules('studentname', 'Student Name',
+		// 'trim|required|callback_alpha_only_space');
+		// $this->form_validation->set_rules('school', 'School', 'callback_combo_check');
+		// $this->form_validation->set_rules('registeredDate', 'Registered Date', 'required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+		//fail validation
+			$this->load->view('delete_event_view', $data);	
+		}
+		else
+		{
+		
+			$data = array(
+				'idevents' => $this->input->post('ID'),
+				 'eventname' => $this->input->post('Title of Event'),
+				 'eventstartdate' => @date('Y-m-d', @strtotime($this->input->post('Date'))),);
+			//update employee record
+			$this->db->where('events_id', $id);
+			$this->db->update('tbl_event', $data);
+			//display success message
+			//$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event Record is Successfully Updated!</div>');
+			redirect('index.php/pages/update_event_view/' . $id);
+		}
+	}
 	
 	public function delete_event_view()
     {
 		
 		//load the event model
-		 $this->load->model('EventsModel');
-		 $data = $this->EventsModel->get_events_list();  
+		 $this->load->model('Emodel');
+		 $data['event_list'] = $this->Emodel->get_event_list();  
 		//Delete event page
         $this->load->view('template/header');
         $this->load->view('delete_event_view', $data);
@@ -149,12 +186,11 @@ class Pages extends CI_Controller {
     }
 	
 	//delete event function 
-	public function edelete($id)
-	{
+	public function edelete($id){
 	      echo $id;	
 		 //load the event model
-		 $this->load->model('EventsModel');
-		 $data = $this->EventsModel-> deleteevent($id); 
+		 $this->load->model('Emodel');
+		 $data = $this->Emodel->deleteevent($id); 
 	}
 	
 	public function article()
@@ -168,7 +204,9 @@ class Pages extends CI_Controller {
         $this->load->view('template/footer');
     }
 
-	public function updateArticle()
+
+		public function updateArticle()
+
     {
 		//Article page
 
@@ -176,17 +214,16 @@ class Pages extends CI_Controller {
         $this->load->view('update_article_view');
         $this->load->view('template/footer');
     }
-	
-	public function deleteArticle()
+		public function deleteArticle()
     {
 		//Article page
         $this->load->view('template/header');
         $this->load->view('delete_article_view');
         $this->load->view('template/footer');
 
-	}
 
-
+    }
+	
 	public function eview()
     {
 		//Create event page
@@ -195,5 +232,60 @@ class Pages extends CI_Controller {
         $this->load->view('template/footer');
 
     }
+	
+	function updateEvents($eventsid)
+
+	{
+
+	  $this->load->model('Emodel');
+	 $data['eventsid'] = $eventsid;
+
+	 //fetch data from events table
+	 $data['event_list'] = $this->Emodel->get_event_list();
+
+	 //fetch events record for the given event ID.
+	 $data['eventrecord'] = $this->Emodel->get_events_record($eventsid);
+
+	 //set validation rules	
+	$this->form_validation->set_rules('eventname', 'Event Name','trim|required');
+	$this->form_validation->set_rules('event_startdate', 'Date of Event', 'required');
+
+	// if ($this->form_validation->run() == FALSE)	
+	// {
+
+		//fail validation
+		// $this->load->view('template/header');
+		// $this->load->view('update_event_view', $data);
+		 
+	 //}
+//else
+	// {
+	 	 echo $this->input->post('eventname')."asdasdasdasd";
+		//pass validation
+
+		$data = array(		
+		'event_name' => $this->input->post('eventname'),
+		'event_startdate' => @date('Y-m-d', @strtotime($this->input->post('event_startdate'))),);
+		
+	
+		//update event record
+		$where = "events_id ='".$eventsid."'";
+		$this->db->where($where);
+		$this->db->update('tbl_events', $data);
+
+
+	
+		
+		//display success message
+		//$this->session->set_flashdata('msg', '<div class="alert alert-success textcenter">Event Record is successfully updated.</div>');
+		$data['event_list'] = $this->Emodel->get_events_record($eventsid);
+	
+	//Update event page
+        $this->load->view('template/header');
+        $this->load->view('update_event_view',$data);
+        $this->load->view('template/footer');
+	// }
+	}
+	
 }
 
